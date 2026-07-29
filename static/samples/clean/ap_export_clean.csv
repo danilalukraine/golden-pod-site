@@ -1,0 +1,151 @@
+invoice_number,vendor,amount,invoice_date,due_date,status,po_number
+INV-2026-1000,Redwood Payroll Services,831.92,2026-04-16,2026-05-31,pending,PO-5245
+INV-2026-1001,Timberline Maintenance,733.84,2026-04-01,2026-04-16,paid,PO-5834
+INV-2026-1002,Crescent Print Works,588.83,2026-06-27,2026-08-11,pending,PO-5951
+INV-2026-1003,Lakeside Freight Co,615.67,2026-05-16,2026-06-15,pending,PO-5294
+INV-2026-1004,Meridian Office Partners,126.35,2026-05-29,2026-06-28,pending,PO-5372
+INV-2026-1005,Lakeside Freight Co,492.87,2026-05-30,2026-07-14,pending,PO-5518
+INV-2026-1006,Beacon Legal Advisors,1576.76,2026-06-16,2026-07-16,pending,PO-5525
+INV-2026-1007,Meridian Office Partners,1826.23,2026-06-06,2026-07-06,paid,PO-5734
+INV-2026-1008,Lakeside Freight Co,530.02,2026-06-19,2026-07-19,pending,PO-5690
+INV-2026-1009,Beacon Legal Advisors,742.86,2026-05-31,2026-07-15,pending,PO-5207
+INV-2026-1010,Crescent Print Works,1685.67,2026-05-08,2026-06-07,pending,PO-5477
+INV-2026-1011,Westfield Insurance Group,1365.0,2026-06-05,2026-07-20,paid,PO-5851
+INV-2026-1012,Northgate Consulting,1492.01,2026-05-08,2026-06-22,pending,PO-5862
+INV-2026-1013,Granite Security Solutions,1617.28,2026-06-01,2026-07-01,pending,PO-5149
+INV-2026-1014,Redwood Payroll Services,509.75,2026-05-28,2026-06-12,paid,PO-5253
+INV-2026-1015,Cobalt Marketing Studio,1278.36,2026-04-16,2026-05-16,pending,PO-5158
+INV-2026-1016,Granite Security Solutions,301.61,2026-04-01,2026-05-16,paid,PO-5558
+INV-2026-1017,Lakeside Freight Co,573.63,2026-04-29,2026-05-29,pending,PO-5684
+INV-2026-1018,Beacon Legal Advisors,1515.21,2026-04-21,2026-06-05,paid,PO-5532
+INV-2026-1019,Cobalt Marketing Studio,500.5,2026-04-26,2026-05-26,pending,PO-5956
+INV-2026-1020,Timberline Maintenance,148.72,2026-04-04,2026-05-04,pending,PO-5935
+INV-2026-1021,Northgate Consulting,597.63,2026-04-16,2026-05-16,paid,PO-5444
+INV-2026-1022,Westfield Insurance Group,320.98,2026-06-19,2026-07-04,pending,PO-5034
+INV-2026-1023,Timberline Maintenance,792.34,2026-04-26,2026-05-11,paid,PO-5495
+INV-2026-1024,Northgate Consulting,746.5,2026-06-26,2026-07-26,paid,PO-5399
+INV-2026-1025,Beacon Legal Advisors,494.38,2026-05-05,2026-05-20,pending,PO-5191
+INV-2026-1026,Crescent Print Works,235.83,2026-05-15,2026-06-29,pending,PO-5181
+INV-2026-1027,Lakeside Freight Co,635.08,2026-05-12,2026-06-11,paid,PO-5236
+INV-2026-1028,Meridian Office Partners,880.02,2026-04-01,2026-05-01,pending,PO-5866
+INV-2026-1029,Lakeside Freight Co,289.48,2026-04-21,2026-05-21,pending,PO-5569
+INV-2026-1030,Cobalt Marketing Studio,1378.86,2026-06-12,2026-07-12,paid,PO-5103
+INV-2026-1031,Cobalt Marketing Studio,199.36,2026-05-04,2026-05-19,paid,PO-5777
+INV-2026-1032,Westfield Insurance Group,917.36,2026-05-16,2026-05-31,pending,PO-5283
+INV-2026-1033,Northgate Consulting,1254.85,2026-06-15,2026-07-15,pending,PO-5262
+INV-2026-1034,Meridian Office Partners,1396.13,2026-04-09,2026-04-24,paid,PO-5240
+INV-2026-1035,Fairview Catering Group,435.34,2026-04-03,2026-05-03,pending,PO-5621
+INV-2026-1036,Fairview Catering Group,1119.57,2026-06-20,2026-08-04,paid,PO-5608
+INV-2026-1037,Cobalt Marketing Studio,423.28,2026-05-30,2026-06-14,pending,PO-5881
+INV-2026-1038,Meridian Office Partners,260.25,2026-06-04,2026-07-19,pending,PO-5711
+INV-2026-1039,Fairview Catering Group,1019.91,2026-05-13,2026-06-27,paid,PO-5555
+INV-2026-1040,Meridian Office Partners,656.23,2026-05-14,2026-06-13,pending,PO-5592
+INV-2026-1041,Beacon Legal Advisors,419.45,2026-04-17,2026-05-17,paid,PO-5793
+INV-2026-1042,Crescent Print Works,1250.58,2026-04-17,2026-06-01,paid,PO-5233
+INV-2026-1043,Cobalt Marketing Studio,28.4,2026-04-03,2026-05-03,paid,PO-5859
+INV-2026-1044,Fairview Catering Group,760.42,2026-04-23,2026-05-23,pending,PO-5057
+INV-2026-1045,Timberline Maintenance,2473.35,2026-06-24,2026-07-24,paid,PO-5993
+INV-2026-1046,Granite Security Solutions,4473.16,2026-04-29,2026-06-13,pending,PO-5973
+INV-2026-1047,Fairview Catering Group,686.29,2026-04-30,2026-05-30,pending,PO-5470
+INV-2026-1048,Alderwood IT Services,425.17,2026-06-21,2026-07-21,paid,PO-5643
+INV-2026-1049,Cobalt Marketing Studio,3422.14,2026-05-23,2026-06-07,paid,PO-5086
+INV-2026-1050,Granite Security Solutions,289.99,2026-05-09,2026-06-08,paid,PO-5925
+INV-2026-1051,Redwood Payroll Services,848.54,2026-04-03,2026-05-03,paid,PO-5978
+INV-2026-1052,Westfield Insurance Group,646.77,2026-05-21,2026-06-20,paid,PO-5087
+INV-2026-1053,Crescent Print Works,1031.59,2026-04-19,2026-05-19,paid,PO-5755
+INV-2026-1054,Crescent Print Works,819.93,2026-06-15,2026-07-15,pending,PO-5365
+INV-2026-1055,Fairview Catering Group,824.35,2026-04-18,2026-06-02,paid,PO-5739
+INV-2026-1056,Northgate Consulting,208.52,2026-06-06,2026-07-06,paid,PO-5908
+INV-2026-1057,Fairview Catering Group,732.68,2026-04-15,2026-04-30,paid,PO-5376
+INV-2026-1058,Northgate Consulting,358.49,2026-05-09,2026-06-08,paid,PO-5334
+INV-2026-1059,Cobalt Marketing Studio,246.23,2026-06-02,2026-07-02,paid,PO-5356
+INV-2026-1060,Redwood Payroll Services,713.88,2026-05-31,2026-07-15,pending,PO-5084
+INV-2026-1061,Crescent Print Works,965.21,2026-04-09,2026-05-24,pending,PO-5771
+INV-2026-1062,Fairview Catering Group,321.62,2026-06-24,2026-07-24,pending,PO-5412
+INV-2026-1063,Fairview Catering Group,149.91,2026-05-11,2026-06-10,pending,PO-5851
+INV-2026-1064,Beacon Legal Advisors,484.86,2026-06-15,2026-07-15,pending,PO-5336
+INV-2026-1065,Crescent Print Works,104.63,2026-04-16,2026-05-31,paid,PO-5558
+INV-2026-1066,Westfield Insurance Group,352.26,2026-06-20,2026-07-20,paid,PO-5274
+INV-2026-1067,Meridian Office Partners,823.13,2026-05-08,2026-06-22,pending,PO-5690
+INV-2026-1068,Cobalt Marketing Studio,274.45,2026-05-23,2026-07-07,paid,PO-5434
+INV-2026-1069,Granite Security Solutions,767.76,2026-05-16,2026-06-30,paid,PO-5010
+INV-2026-1070,Redwood Payroll Services,679.7,2026-05-05,2026-06-04,pending,PO-5852
+INV-2026-1071,Meridian Office Partners,1718.23,2026-05-31,2026-06-15,paid,PO-5651
+INV-2026-1072,Westfield Insurance Group,178.47,2026-04-16,2026-05-31,pending,PO-5637
+INV-2026-1073,Westfield Insurance Group,382.3,2026-06-20,2026-07-20,paid,PO-5097
+INV-2026-1074,Alderwood IT Services,429.97,2026-04-20,2026-06-04,paid,PO-5722
+INV-2026-1075,Lakeside Freight Co,200.13,2026-05-10,2026-06-09,paid,PO-5277
+INV-2026-1076,Timberline Maintenance,126.0,2026-05-24,2026-06-23,pending,PO-5351
+INV-2026-1077,Fairview Catering Group,350.51,2026-05-15,2026-06-29,pending,PO-5037
+INV-2026-1078,Crescent Print Works,592.42,2026-06-22,2026-07-22,pending,PO-5203
+INV-2026-1079,Crescent Print Works,65.66,2026-05-18,2026-07-02,paid,PO-5595
+INV-2026-1080,Timberline Maintenance,1609.55,2026-04-07,2026-05-07,paid,PO-5873
+INV-2026-1081,Northgate Consulting,573.08,2026-06-05,2026-07-05,paid,PO-5575
+INV-2026-1082,Cobalt Marketing Studio,2714.4,2026-04-23,2026-06-07,paid,PO-5947
+INV-2026-1083,Westfield Insurance Group,298.69,2026-06-17,2026-07-17,paid,PO-5810
+INV-2026-1084,Westfield Insurance Group,2700.97,2026-05-05,2026-06-04,pending,PO-5372
+INV-2026-1085,Northgate Consulting,390.19,2026-06-23,2026-07-23,paid,PO-5746
+INV-2026-1086,Crescent Print Works,779.1,2026-04-19,2026-05-04,pending,PO-5963
+INV-2026-1087,Northgate Consulting,846.95,2026-04-23,2026-05-23,paid,PO-5769
+INV-2026-1088,Westfield Insurance Group,966.81,2026-04-24,2026-06-08,paid,PO-5307
+INV-2026-1089,Timberline Maintenance,735.83,2026-04-29,2026-05-14,pending,PO-5158
+INV-2026-1090,Meridian Office Partners,197.84,2026-05-12,2026-06-26,paid,PO-5096
+INV-2026-1091,Fairview Catering Group,943.52,2026-05-16,2026-06-15,paid,PO-5167
+INV-2026-1092,Alderwood IT Services,487.77,2026-06-04,2026-07-04,paid,PO-5677
+INV-2026-1093,Granite Security Solutions,355.27,2026-06-03,2026-07-18,pending,PO-5470
+INV-2026-1094,Lakeside Freight Co,859.99,2026-05-17,2026-07-01,paid,PO-5756
+INV-2026-1095,Lakeside Freight Co,1447.84,2026-04-26,2026-05-26,paid,PO-5208
+INV-2026-1096,Meridian Office Partners,217.0,2026-06-22,2026-08-06,paid,PO-5663
+INV-2026-1097,Beacon Legal Advisors,1126.53,2026-06-21,2026-07-21,paid,PO-5488
+INV-2026-1098,Timberline Maintenance,553.06,2026-06-06,2026-07-06,paid,PO-5110
+INV-2026-1099,Beacon Legal Advisors,12537.83,2026-04-19,2026-06-03,paid,PO-5953
+INV-2026-1100,Cobalt Marketing Studio,888.58,2026-06-29,2026-07-29,paid,PO-5472
+INV-2026-1101,Crescent Print Works,153.45,2026-05-30,2026-06-14,pending,PO-5038
+INV-2026-1102,Redwood Payroll Services,699.11,2026-04-11,2026-05-26,paid,PO-5395
+INV-2026-1103,Fairview Catering Group,881.02,2026-06-22,2026-07-22,paid,PO-5027
+INV-2026-1104,Meridian Office Partners,492.37,2026-04-14,2026-05-14,paid,PO-5766
+INV-2026-1105,Granite Security Solutions,1358.08,2026-04-10,2026-05-10,paid,PO-5314
+INV-2026-1106,Granite Security Solutions,147.32,2026-05-31,2026-07-15,paid,PO-5409
+INV-2026-1107,Meridian Office Partners,694.72,2026-05-01,2026-06-15,pending,PO-5255
+INV-2026-1108,Redwood Payroll Services,330.05,2026-06-16,2026-07-01,pending,PO-5604
+INV-2026-1109,Beacon Legal Advisors,585.85,2026-05-19,2026-06-18,paid,PO-5542
+INV-2026-1110,Crescent Print Works,1122.15,2026-05-30,2026-06-29,pending,PO-5884
+INV-2026-1111,Redwood Payroll Services,1164.19,2026-06-14,2026-06-29,pending,PO-5825
+INV-2026-1112,Beacon Legal Advisors,812.5,2026-04-28,2026-06-12,paid,PO-5820
+INV-2026-1113,Alderwood IT Services,1348.52,2026-04-14,2026-04-29,paid,PO-5052
+INV-2026-1114,Fairview Catering Group,960.8,2026-05-04,2026-06-03,paid,PO-5261
+INV-2026-1115,Timberline Maintenance,1428.49,2026-04-22,2026-05-07,paid,PO-5364
+INV-2026-1116,Alderwood IT Services,220.41,2026-06-28,2026-07-13,pending,PO-5048
+INV-2026-1117,Alderwood IT Services,98.15,2026-05-08,2026-06-07,paid,PO-5293
+INV-2026-1118,Lakeside Freight Co,922.85,2026-06-19,2026-07-19,paid,PO-5560
+INV-2026-1119,Meridian Office Partners,636.55,2026-06-21,2026-08-05,pending,PO-5233
+INV-2026-1120,Meridian Office Partners,502.16,2026-06-08,2026-06-23,pending,PO-5395
+INV-2026-1121,Westfield Insurance Group,314.02,2026-06-11,2026-07-11,pending,PO-5409
+INV-2026-1122,Granite Security Solutions,572.38,2026-05-06,2026-05-21,paid,PO-5962
+INV-2026-1123,Cobalt Marketing Studio,1553.2,2026-06-12,2026-07-12,pending,PO-5179
+INV-2026-1124,Lakeside Freight Co,658.42,2026-06-03,2026-07-18,pending,PO-5644
+INV-2026-1125,Lakeside Freight Co,896.77,2026-05-24,2026-06-23,paid,PO-5665
+INV-2026-1126,Crescent Print Works,314.32,2026-05-03,2026-06-02,paid,PO-5314
+INV-2026-1127,Redwood Payroll Services,1322.1,2026-06-08,2026-07-23,paid,PO-5248
+INV-2026-1128,Lakeside Freight Co,282.04,2026-06-25,2026-08-09,paid,PO-5130
+INV-2026-1129,Crescent Print Works,775.29,2026-04-01,2026-05-16,paid,PO-5454
+INV-2026-1130,Timberline Maintenance,415.0,2026-06-17,2026-07-02,paid,PO-5098
+INV-2026-1131,Beacon Legal Advisors,1512.52,2026-04-30,2026-05-15,pending,PO-5449
+INV-2026-1132,Timberline Maintenance,4819.08,2026-05-27,2026-06-26,pending,PO-5480
+INV-2026-1133,Alderwood IT Services,154.4,2026-05-08,2026-06-07,pending,PO-5729
+INV-2026-1134,Northgate Consulting,151.29,2026-05-22,2026-06-21,paid,PO-5235
+INV-2026-1135,Alderwood IT Services,253.92,2026-05-20,2026-07-04,pending,PO-5933
+INV-2026-1136,Fairview Catering Group,661.75,2026-06-09,2026-07-09,pending,PO-5248
+INV-2026-1137,Crescent Print Works,610.27,2026-04-23,2026-05-23,paid,PO-5868
+INV-2026-1138,Cobalt Marketing Studio,812.59,2026-05-26,2026-07-10,pending,PO-5697
+INV-2026-1139,Westfield Insurance Group,1163.05,2026-04-08,2026-05-08,pending,PO-5856
+INV-2026-1140,Cobalt Marketing Studio,152.83,2026-05-23,2026-06-22,pending,PO-5851
+INV-2026-1141,Beacon Legal Advisors,1363.68,2026-05-15,2026-05-30,pending,PO-5396
+INV-2026-1142,Westfield Insurance Group,1560.28,2026-06-19,2026-07-19,pending,PO-5364
+INV-2026-1143,Redwood Payroll Services,277.75,2026-04-04,2026-05-19,pending,PO-5484
+INV-2026-1144,Westfield Insurance Group,532.2,2026-04-21,2026-05-06,paid,PO-5103
+INV-2026-1145,Cobalt Marketing Studio,365.88,2026-04-15,2026-05-15,paid,PO-5426
+INV-2026-1146,Lakeside Freight Co,40.74,2026-05-01,2026-05-16,pending,PO-5674
+INV-2026-1147,Alderwood IT Services,542.98,2026-04-20,2026-05-05,pending,PO-5349
+INV-2026-1148,Northgate Consulting,351.07,2026-06-16,2026-07-16,pending,PO-5477
+INV-2026-1149,Northgate Consulting,2532.84,2026-04-13,2026-05-28,paid,PO-5021

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service | Golden Pod</title>
+<meta name="description" content="The agreement for using Golden Pod: what the Service is, the 2× Guarantee, disclaimers, and limits of liability. Governed by Ontario, Canada law.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+<link rel="stylesheet" href="/static/fonts/fonts.css">
+<style>
+  :root {
+    --bg: #FBF7EC; --bg-deep: #F3EEE1; --bg-footer: #F3EEE1;
+    --card: #FFFFFF; --card-hot: #FFF6E4; --card-hot-border: #E3D9BE;
+    --line: #E8E2D4; --line-card: #EDE7D8;
+    --ink: #211C13; --ink-bright: #1B1710;
+    --muted: #6E6553; --faint: #8C8774;
+    --gold: #B5872E; --gold-bright: #A67C12; --gold-pale: #83660F;
+    --serif: 'Space Grotesk', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'IBM Plex Sans', system-ui, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--gold-bright); text-decoration: none; }
+  a:hover { color: var(--gold-pale); }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+  .kicker { font-family: var(--mono); font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-bright); text-align: center; margin-bottom: 14px; }
+
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,247,236,.85); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .topnav-inner { padding: 16px 0; display: flex; align-items: center; gap: 36px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; letter-spacing: 0.14em; font-size: 15px; color: var(--ink-bright); }
+  .logo-mark { width: 22px; height: 22px; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: 28px; margin-left: 8px; }
+  .nav-links a { font-weight: 500; font-size: 15px; color: var(--muted); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-aux { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+  .nav-aux > a:not(.btn-gold) { font-weight: 500; font-size: 15px; color: var(--muted); }
+  .nav-aux > a:not(.btn-gold):hover { color: var(--ink); }
+  .btn-gold { display: inline-block; background: var(--gold); color: #22303A; font-weight: 600; border-radius: 9px; text-align: center; }
+  .btn-gold:hover { background: var(--gold-bright); color: #22303A; }
+
+  .legal { max-width: 820px; margin: 0 auto; padding: 8px 28px 40px; }
+  .legal .meta { font-family: var(--mono); font-size: 13px; color: var(--faint); text-align: center; margin-bottom: 40px; }
+  .legal h2 { font-family: var(--serif); font-weight: 600; font-size: 24px; letter-spacing: -0.01em; color: var(--ink-bright); margin: 44px 0 14px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .legal h2:first-of-type { border-top: none; padding-top: 0; }
+  .legal p { font-size: 16px; color: var(--ink); margin: 0 0 14px; }
+  .legal ul { margin: 0 0 14px; padding-left: 22px; }
+  .legal li { font-size: 16px; color: var(--ink); margin-bottom: 8px; }
+  .legal strong { color: var(--ink-bright); }
+  .note { background: var(--card-hot); border-left: 4px solid var(--gold); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 18px 0; }
+  .note p { font-size: 15.5px; color: #4A4433; margin: 0; }
+  .caps { font-family: var(--mono); font-size: 13.5px; letter-spacing: 0.02em; color: #6E6553; text-transform: none; }
+
+  footer { border-top: 1px solid var(--line); background: var(--bg-footer); }
+  .footer-inner { padding: 40px 32px; display: flex; gap: 64px; flex-wrap: wrap; font-size: 14px; }
+  .footer-inner a { color: var(--muted); }
+  .footer-col { display: flex; flex-direction: column; gap: 8px; }
+  .footer-col b { font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  /* Copyright/contact as a proper bottom bar (full-width hairline,
+     centered) instead of floating alone top-right of the columns
+     -- matches index.html's footer-base; owner flagged the old
+     placement as visually unbalanced (17.07.2026). */
+  .footer-base { border-top: 1px solid var(--line); padding: 22px 28px; text-align: center; font-size: 13px; color: var(--faint); }
+
+  @media (max-width: 900px) {
+    .topnav nav.nav-links { overflow-x: auto; scrollbar-width: none; }
+  }
+  /* Below 600px the topnav (brand + Pricing + Log in + gold CTA) is wider
+     than the viewport and forces page-level horizontal scroll. nav-links
+     hides (the footer carries the same links, incl. Pricing); the CTA
+     shrinks -- !important because it carries inline padding/font-size. */
+  @media (max-width: 600px) {
+    .topnav-inner { gap: 12px; }
+    .nav-links { display: none; }
+    .nav-aux { gap: 10px; }
+    .nav-aux > a[href="/pricing"] { display: none; }
+    .nav-aux a.btn-gold { padding: 7px 11px !important; font-size: 12.5px !important; white-space: nowrap; }
+  }
+</style>
+<style id="gp-light-cta">
+/* platinum primary CTA + quieted secondary buttons (light theme) */
+.btn-gold,.hero-actions .btn-gold,.topnav .nav-cta,.btn-order,.price-card .btn-order,.tier-order,.tier-card .tier-order,.cta-btn{
+  background:linear-gradient(180deg,#F5F7F9 0%,#C6CED5 100%)!important;color:#22303A!important;
+  border:1px solid #B4BDC4!important;border-bottom:4px solid #9BA6AE!important;text-shadow:none!important;
+  box-shadow:0 9px 22px rgba(120,135,150,.32),inset 0 1px 0 rgba(255,255,255,.7)!important;}
+.btn-ghost{background:transparent!important;border:1px solid #E3DECF!important;color:#6E6553!important;box-shadow:none!important;}
+.btn-ghost:hover{color:#211C13!important;border-color:#C9A227!important;}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="wrap topnav-inner">
+    <a href="/" class="brand" aria-label="Golden Pod home">
+      <svg class="logo-mark" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+        <circle cx="13" cy="13" r="7" fill="#C9A227"></circle>
+        <circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle>
+        <ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse>
+      </svg>
+      GOLDEN&nbsp;POD
+    </a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+      <a href="/samples">Samples</a>
+    </nav>
+    <div class="nav-aux">
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:contact@golden-pod.com">Log in</a>
+      <a href="mailto:contact@golden-pod.com" class="btn-gold" style="padding: 9px 18px; font-size: 14px">Get your report</a>
+    </div>
+  </div>
+</header>
+
+<section class="wrap" style="max-width: 820px; padding-top: 84px; padding-bottom: 20px; text-align: center">
+  <div class="kicker">Legal</div>
+  <h1 style="font-family: var(--serif); font-weight: 700; font-size: clamp(34px, 5vw, 50px); line-height: 1.06; letter-spacing: -0.02em; color: var(--ink-bright); margin: 0 0 18px">Terms of Service</h1>
+  <p style="font-size: 18px; color: #6E6553; max-width: 600px; margin: 0 auto">The agreement for using Golden Pod. Short, readable, and honest about what the Service is &mdash; and what it isn't.</p>
+</section>
+
+<div class="legal">
+  <div class="meta">Effective 15 July 2026 &middot; Last updated 15 July 2026</div>
+
+  <h2>1. This agreement</h2>
+  <p>These Terms are a binding agreement between you ("you", "Customer") and <strong>Assay Systems</strong>, a sole proprietorship operating from Ottawa, Ontario, Canada ("Assay Systems", "we", "us"), for your use of the Golden Pod service at golden-pod.com ("the Service"). By creating an account, uploading a file, or using the Service, you accept these Terms. If you use the Service for an organisation, you confirm you are authorised to bind it. Our <a href="/privacy">Privacy Policy</a> and, where applicable, our Data Processing Addendum are part of these Terms.</p>
+
+  <h2>2. What the Service is &mdash; and isn't</h2>
+  <p>Golden Pod is a <strong>deterministic diagnostic tool</strong> that analyses ledger and accounting files you upload and returns findings &mdash; potential duplicates, formatting and encoding issues, vendor anomalies, and an estimate of "dollars at risk" &mdash; as a report, and, for the Complete Package, a cleaned file with a change log.</p>
+  <div class="note">
+    <p><strong>The Service is an analytical aid, not professional advice.</strong> Findings are informational. They are not accounting, audit, tax, financial, or legal advice, and "dollars at risk" is an estimate of amounts to <em>review</em> &mdash; not a statement that money was lost or is recoverable. You are responsible for verifying findings and for any decision you make based on them.</p>
+  </div>
+
+  <h2>3. Accounts and acceptable use</h2>
+  <p>The Service is for business use by users 16 or older. You sign in by a passwordless "magic link" sent to your email; you are responsible for keeping that email secure and for activity under your account.</p>
+  <p>You retain all rights to the files you upload and grant us a limited licence to process them solely to provide the Service, as described in the Privacy Policy. <strong>You represent that, for every file you upload, you have the right and all necessary authority, consent, or legal basis to submit that data to us for processing</strong> &mdash; including where the file contains a third party's (e.g. your client's) information.</p>
+  <p>You must not: upload data you are not authorised to process; upload malicious code or unlawful or infringing content; attempt to break, overload, reverse-engineer, or bypass the Service's access controls, metering, or abuse protections; or resell the Service except as expressly permitted (e.g. the published partner programme). We may suspend or terminate access for breach.</p>
+
+  <h2>4. Free preview, pricing, and payment</h2>
+  <p>The <strong>free preview</strong> runs the engine and shows you an aggregate figure plus <strong>one</strong> verifiable finding. It is a demonstration, not a full report, and is limited to one per email address. Current pricing for paid tiers is always shown before you buy &mdash; see <a href="/pricing">Pricing</a>. The unit of billing is the <strong>report</strong>, not the file. Payment is processed by Stripe; by paying you also agree to Stripe's terms. Taxes may apply.</p>
+
+  <h2>5. The 2&times; Guarantee</h2>
+  <p>You pay the fee only if the report identifies at least 2&times; your fee in Duplicate-Payment Groups &mdash; two or more payments sharing an exact invoice number, an exact amount, and the same vendor, which you can verify line by line. If the report identifies less than 2&times; your fee &mdash; including zero &mdash; the full report is yours free. The threshold counts only exact-matched duplicate amounts found in your file (never a projected figure); sequence-gap and encoding notes are free context and do not count.</p>
+  <p>The engine is deterministic: the same file always produces the same Duplicate-Payment Groups, so whether the fee applies is a fact we can both check, not an opinion. Nothing here removes any non-excludable statutory or consumer right you have.</p>
+
+  <h2>6. Intellectual property</h2>
+  <p>You own your data and the specific report generated for you. We own the Service &mdash; the engine, methodology, models, and software &mdash; and nothing here transfers it to you. You may use your report for your own business purposes but may not resell or redistribute the Service itself.</p>
+
+  <h2>7. Disclaimer of warranties</h2>
+  <p class="caps">The Service is provided "AS IS" and "AS AVAILABLE". To the fullest extent permitted by law, we disclaim all warranties, express or implied, including merchantability, fitness for a particular purpose, non-infringement, and any warranty that the Service will be uninterrupted, error-free, or that findings will be complete or identify every issue in your file.</p>
+  <p>Some places do not allow certain exclusions; there, they apply to the maximum extent permitted, and nothing here removes non-excludable consumer or statutory guarantees (for example under Australian Consumer Law or Canadian consumer legislation).</p>
+
+  <h2>8. Limitation of liability</h2>
+  <p class="caps">To the fullest extent permitted by law, we are not liable for indirect, incidental, special, consequential, or punitive damages, or for lost profits, lost revenue, lost data, or amounts you believe you should have recovered based on a finding. Our total aggregate liability arising out of or relating to the Service and these Terms will not exceed the greater of (a) the amount you paid us in the three (3) months before the event giving rise to the claim, or (b) USD $100.</p>
+  <p>These limits reflect the allocation of risk that makes the Service available at its price. Where a jurisdiction does not permit some of these limits, they apply to the maximum extent permitted and non-excludable rights remain unaffected.</p>
+
+  <h2>9. Indemnity</h2>
+  <p>You will indemnify and hold us harmless from third-party claims, losses, and reasonable costs arising from (a) data you uploaded without the right to do so, or (b) your breach of these Terms or of applicable law. We will notify you of any such claim, and you may control the defence provided you do not settle in a way that imposes obligations on us without our consent.</p>
+
+  <h2>10. Suspension and termination</h2>
+  <p>You may stop using the Service at any time. We may suspend or terminate access for breach, legal risk, or non-payment. On termination your right to use the Service ends; uploaded files and reports are deleted per the Privacy Policy's retention schedule (within 48 hours of processing) regardless of termination.</p>
+
+  <h2>11. Changes</h2>
+  <p>We may modify the Service and update these Terms. Material changes will be posted with a new "Last updated" date and, where required, notified to you. Continued use after changes take effect means you accept them; if you do not agree, stop using the Service.</p>
+
+  <h2>12. Governing law and disputes</h2>
+  <p>These Terms are governed by the laws of the <strong>Province of Ontario and the federal laws of Canada applicable there</strong>, without regard to conflict-of-laws rules. The courts located in <strong>Ottawa, Ontario</strong> have exclusive jurisdiction and you consent to that venue, except that either party may seek injunctive relief in any competent court, and nothing here overrides mandatory consumer-protection rights available to you in your country of residence.</p>
+
+  <h2>13. General</h2>
+  <p>These Terms, with the Privacy Policy and any Data Processing Addendum, are the entire agreement between us. If any provision is unenforceable, the rest remains in effect. Our failure to enforce a provision is not a waiver. You may not assign these Terms without our consent; we may assign them in connection with a merger, acquisition, or sale of assets. Notices to you may be sent to your account email.</p>
+
+  <h2>14. Contact</h2>
+  <p>Assay Systems &middot; <a href="mailto:contact@golden-pod.com">contact@golden-pod.com</a> &middot; 150 Gloucester St, Ottawa, ON K2P 0A6, Canada.</p>
+</div>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div style="max-width: 280px">
+      <div style="display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; margin-bottom: 10px; color: var(--ink-bright)">
+        <svg width="22" height="22" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <circle cx="13" cy="13" r="7" fill="#C9A227"></circle>
+          <circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle>
+          <ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse>
+        </svg>
+        GOLDEN POD
+      </div>
+      <div style="color: var(--muted); line-height: 1.6">Deterministic analysis of accounting files. Findings in dollars, formula published.</div>
+    </div>
+    <div class="footer-col">
+      <b>Product</b>
+      <a href="mailto:contact@golden-pod.com">Get your report</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:contact@golden-pod.com">Log in</a>
+      <a href="/samples">Samples</a>
+    </div>
+    <div class="footer-col">
+      <b>Company</b>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="footer-col">
+      <b>Legal</b>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/legal">Legal</a>
+    </div>
+  </div>
+  <div class="footer-base">contact@golden-pod.com &middot; &copy; 2026 Golden Pod</div>
+</footer>
+</body>
+</html>

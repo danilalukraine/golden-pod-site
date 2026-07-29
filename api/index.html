@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API &mdash; Integrate the analysis into your close | Golden Pod</title>
+<meta name="description" content="Golden Pod's API: send a file with your key, get the finished report back automatically. Per-engagement access, no self-serve signup.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+<link rel="stylesheet" href="/static/fonts/fonts.css">
+<style>
+  /* Rebuilt from the owner's Claude Design project "Golden-pod структура
+     и редактура", file "API.dc.html" (14.07.2026). Per the owner's earlier
+     security decision (ТЗ 12.07 item 10), the verbatim findings schema and
+     exact throttle/limit figures are NOT published here -- kept for direct
+     conversations with technical contacts, same as before this rebuild. */
+  :root {
+    --bg: #FBF7EC; --bg-deep: #F3EEE1; --bg-footer: #F3EEE1;
+    --card: #FFFFFF; --line: #E8E2D4; --line-card: #EDE7D8;
+    --ink: #211C13; --ink-bright: #1B1710;
+    --muted: #6E6553; --faint: #8C8774;
+    --gold: #B5872E; --gold-bright: #A67C12;
+    --serif: 'Space Grotesk', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'IBM Plex Sans', system-ui, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--gold-bright); text-decoration: none; }
+  a:hover { color: #83660F; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+  .kicker { font-family: var(--mono); font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-bright); text-align: center; margin-bottom: 14px; }
+  h2.sect { font-family: var(--serif); font-weight: 600; font-size: 32px; letter-spacing: -0.015em; color: var(--ink); text-align: center; margin: 0 0 16px; }
+  .lead { font-size: 16.5px; color: #6E6553; margin: 0 0 22px; }
+
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,247,236,.85); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .topnav-inner { padding: 16px 0; display: flex; align-items: center; gap: 36px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; letter-spacing: 0.14em; font-size: 15px; color: var(--ink-bright); }
+  .logo-mark { width: 22px; height: 22px; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: 28px; margin-left: 8px; }
+  .nav-links a { font-weight: 500; font-size: 15px; color: var(--muted); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.current { color: var(--ink); }
+  .nav-aux { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+  .nav-aux > a:not(.btn-gold) { font-weight: 500; font-size: 15px; color: var(--muted); }
+  .nav-aux > a:not(.btn-gold):hover { color: var(--ink); }
+  .btn-gold { display: inline-block; background: var(--gold); color: #22303A; font-weight: 600; border-radius: 9px; text-align: center; }
+  .btn-gold:hover { background: var(--gold-bright); color: #22303A; }
+
+  section.pad { padding: 40px 28px; }
+  .info-box { background: var(--card); border: 1px solid var(--line-card); border-radius: 14px; padding: 24px 26px; font-size: 15px; color: var(--muted); }
+  .callout { padding: 22px 26px; background: #E8E2D4; border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; font-size: 15.5px; color: var(--ink); }
+
+  .get-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .get-card { background: var(--card); border: 1px solid var(--line-card); border-radius: 16px; padding: 26px; }
+  .get-glyph { font-family: var(--mono); font-size: 22px; color: var(--gold-bright); margin-bottom: 14px; }
+  .get-title { font-weight: 600; font-size: 17px; color: #1B1710; margin-bottom: 6px; }
+  .get-desc { font-size: 14px; color: var(--muted); }
+
+  .cta-box { background: var(--bg-deep); border: 1px solid var(--line); border-radius: 20px; padding: 72px 28px; display: flex; flex-direction: column; align-items: center; }
+  .cta-box h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(30px, 4.2vw, 42px); letter-spacing: -0.02em; color: var(--ink-bright); margin: 0 0 16px; text-align: center; }
+  .cta-box p { font-size: 17px; color: #6E6553; margin: 0 0 32px; text-align: center; max-width: 520px; }
+
+  footer { border-top: 1px solid var(--line); background: var(--bg-footer); }
+  .footer-inner { padding: 40px 32px; display: flex; gap: 64px; flex-wrap: wrap; font-size: 14px; }
+  .footer-inner a { color: var(--muted); }
+  .footer-col { display: flex; flex-direction: column; gap: 8px; }
+  .footer-col b { font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+
+  @media (max-width: 900px) {
+    .get-grid { grid-template-columns: 1fr; }
+    .topnav nav.nav-links { overflow-x: auto; scrollbar-width: none; }
+  }
+  /* Below 600px the topnav (brand + Pricing + Log in + gold CTA) is wider
+     than the viewport and forces page-level horizontal scroll. nav-links
+     hides (the footer carries the same links, incl. Pricing); the CTA
+     shrinks -- !important because it carries inline padding/font-size. */
+  @media (max-width: 600px) {
+    .topnav-inner { gap: 12px; }
+    .nav-links { display: none; }
+    .nav-aux { gap: 10px; }
+    .nav-aux > a[href="/pricing"] { display: none; }
+    .nav-aux a.btn-gold { padding: 7px 11px !important; font-size: 12.5px !important; white-space: nowrap; }
+  }
+</style>
+<style id="gp-light-cta">
+/* platinum primary CTA + quieted secondary buttons (light theme) */
+.btn-gold,.hero-actions .btn-gold,.topnav .nav-cta,.btn-order,.price-card .btn-order,.tier-order,.tier-card .tier-order,.cta-btn{
+  background:linear-gradient(180deg,#F5F7F9 0%,#C6CED5 100%)!important;color:#22303A!important;
+  border:1px solid #B4BDC4!important;border-bottom:4px solid #9BA6AE!important;text-shadow:none!important;
+  box-shadow:0 9px 22px rgba(120,135,150,.32),inset 0 1px 0 rgba(255,255,255,.7)!important;}
+.btn-ghost{background:transparent!important;border:1px solid #E3DECF!important;color:#6E6553!important;box-shadow:none!important;}
+.btn-ghost:hover{color:#211C13!important;border-color:#C9A227!important;}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="wrap topnav-inner">
+    <a href="/" class="brand" aria-label="Golden Pod home">
+      <svg class="logo-mark" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+        <circle cx="13" cy="13" r="7" fill="#C9A227"></circle>
+        <circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle>
+        <ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse>
+      </svg>
+      GOLDEN&nbsp;POD
+    </a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/api" class="current">API</a>
+      <a href="/about">About</a>
+      <a href="/samples">Samples</a>
+    </nav>
+    <div class="nav-aux">
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:contact@golden-pod.com">Log in</a>
+      <a href="mailto:contact@golden-pod.com" class="btn-gold" style="padding: 9px 18px; font-size: 14px">Get your report</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="wrap" style="max-width: 900px; padding-top: 96px; padding-bottom: 52px; text-align: center">
+  <div class="kicker">API</div>
+  <h1 style="font-family: var(--serif); font-weight: 700; font-size: clamp(38px, 5.5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; color: var(--ink-bright); margin: 0 0 22px; text-wrap: balance">Integrate it into your close.</h1>
+  <p style="font-size: 20px; color: #6E6553; max-width: 640px; margin: 0 auto; text-wrap: pretty">Send a file with your key. Get the finished report back &mdash; ready to hand to your team, no manual steps in between.</p>
+</section>
+<div class="wrap" style="max-width: 900px"><div style="border-top: 1px solid var(--line)"></div></div>
+
+<!-- 01 access -->
+<section class="wrap pad" style="max-width: 900px">
+  <div class="kicker">01 &mdash; Access</div>
+  <h2 class="sect">Keys and authentication.</h2>
+  <p class="lead">Access is per engagement &mdash; there's no self-serve signup. Write to <a href="mailto:contact@golden-pod.com">contact@golden-pod.com</a> with your volume and we'll set up a key and pricing that fits.</p>
+  <div class="info-box">Every request is authenticated and rate-limited &mdash; the same protections a bank would expect. Details are shared once a key is issued.</div>
+</section>
+
+<!-- 02 what you get -->
+<section class="wrap pad" style="max-width: 900px">
+  <div class="kicker">02 &mdash; What you get</div>
+  <h2 class="sect" style="margin-bottom: 28px">Upload, and get the report back.</h2>
+  <div class="get-grid">
+    <div class="get-card"><div class="get-glyph">&#8677;</div><div class="get-title">Send a file</div><div class="get-desc">One request, straight from your own systems &mdash; no browser required.</div></div>
+    <div class="get-card"><div class="get-glyph">$</div><div class="get-title">Get the finished report</div><div class="get-desc">The same PDF and browser report your team already sees, delivered back to you automatically.</div></div>
+    <div class="get-card"><div class="get-glyph">&#9711;</div><div class="get-title">Look up a report later</div><div class="get-desc">Pull up any past report by its link, any time.</div></div>
+  </div>
+</section>
+
+<!-- 03 limits -->
+<section class="wrap pad" style="max-width: 900px">
+  <div class="kicker">03 &mdash; Limits &amp; policy</div>
+  <h2 class="sect">Defaults, set per engagement.</h2>
+  <p class="lead">Generous file-size and rate limits by default. They scale with your volume, set when we issue your key.</p>
+  <div class="callout">Your file is deleted the moment the report exists. Full data policy on the <a href="/about">About</a> page.</div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="wrap" style="padding: 40px 28px 80px">
+  <div class="cta-box">
+    <h2>Get a key.</h2>
+    <p>Tell us your volume and what your close looks like &mdash; we'll set up access and pricing that fits.</p>
+    <a href="mailto:contact@golden-pod.com" class="btn-gold" style="padding: 15px 32px; font-size: 16px">contact@golden-pod.com</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap footer-inner">
+    <div style="max-width: 280px">
+      <div style="display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; margin-bottom: 10px; color: var(--ink-bright)">
+        <svg width="22" height="22" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <circle cx="13" cy="13" r="7" fill="#C9A227"></circle>
+          <circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle>
+          <ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse>
+        </svg>
+        GOLDEN POD
+      </div>
+      <div style="color: var(--muted); line-height: 1.6">Deterministic analysis of accounting files. Findings in dollars, formula published.</div>
+    </div>
+    <div class="footer-col">
+      <b>Product</b>
+      <a href="mailto:contact@golden-pod.com">Get your report</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:contact@golden-pod.com">Log in</a>
+      <a href="/samples">Samples</a>
+    </div>
+    <div class="footer-col">
+      <b>Company</b>
+      <a href="/methodology">Methodology</a>
+      <a href="/api">API</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="footer-col">
+      <b>Legal</b>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/legal">Legal</a>
+    </div>
+    <div style="flex: 1; text-align: right; color: var(--faint); align-self: flex-end">contact@golden-pod.com &middot; &copy; 2026 Golden Pod</div>
+  </div>
+</footer>
+</body>
+</html>

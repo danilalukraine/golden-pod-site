@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golden Pod &mdash; Find the money hiding in your books</title>
+<meta name="description" content="Upload a file. Get back real dollars -- duplicate payments, vendor typos, broken sequences -- in seconds. Deterministic, published formula.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+<!-- Self-hosted fonts (project rule: no external CDNs). -->
+<link rel="stylesheet" href="/static/fonts/fonts.css">
+<style>
+  /* Rebuilt from the owner's Claude Design project "Golden-pod структура
+     и редактура", file "Golden Pod.dc.html" (14.07.2026) -- content and
+     section structure now match the mockup verbatim, not just its color
+     tokens (see JOURNAL.md 14.07 for why the earlier pass fell short). */
+  :root {
+    --bg: #FBF7EC; --bg-deep: #F3EEE1; --bg-footer: #F3EEE1;
+    --card: #FFFFFF; --card-hot: #FFF6E4; --card-hot-border: #E3D9BE;
+    --line: #E8E2D4; --line-card: #EDE7D8; --line-strong: #D9C9A0; --line-gold: #E3D9BE;
+    --ink: #211C13; --ink-bright: #1B1710;
+    --muted: #6E6553; --faint: #8C8774;
+    --gold: #B5872E; --gold-bright: #A67C12; --gold-pale: #83660F;
+    --green: #1F7A3D;
+    --serif: 'Space Grotesk', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'IBM Plex Sans', system-ui, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--gold-bright); text-decoration: none; }
+  a:hover { color: var(--gold-pale); }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+  .kicker { font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-bright); font-weight: 500; margin-bottom: 14px; }
+  h2.sect { font-family: var(--serif); font-weight: 600; font-size: clamp(28px, 3.6vw, 38px); letter-spacing: -0.015em; color: var(--ink); margin: 0; }
+
+  /* ---------- nav ---------- */
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,247,236,.85); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .topnav-inner { padding: 16px 0; display: flex; align-items: center; gap: 36px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; letter-spacing: 0.14em; font-size: 15px; color: var(--ink-bright); }
+  .logo-mark { width: 22px; height: 22px; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: 28px; margin-left: 8px; }
+  .nav-links a { font-weight: 500; font-size: 15px; color: var(--muted); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.current { color: var(--ink); }
+  .nav-aux { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+  .nav-aux > a:not(.btn-gold) { font-weight: 500; font-size: 15px; color: var(--muted); }
+  .nav-aux > a:not(.btn-gold):hover { color: var(--ink); }
+  .btn-gold { display: inline-block; background: var(--gold); color: #22303A; font-weight: 600; border-radius: 9px; text-align: center; }
+  .btn-gold:hover { background: var(--gold-bright); color: #22303A; }
+  .btn-ghost { display: inline-block; background: transparent; color: var(--ink-bright); font-weight: 600; border-radius: 10px; border: 1px solid var(--line-strong); text-align: center; }
+  .btn-ghost:hover { color: var(--ink-bright); border-color: var(--gold-bright); }
+
+  /* ---------- hero ---------- */
+  .hero { max-width: 900px; margin: 0 auto; padding: 96px 28px 64px; text-align: center; }
+  .hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(38px, 5.5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; color: var(--ink-bright); margin: 0 0 22px; text-wrap: balance; }
+  .hero .dek { font-size: 20px; line-height: 1.5; color: #6E6553; max-width: 640px; margin: 0 auto 34px; text-wrap: pretty; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero-actions .btn-gold, .hero-actions .btn-ghost { padding: 14px 26px; font-size: 16px; }
+  .fineprint { font-family: var(--mono); font-size: 13px; color: #9A9583; margin-top: 26px; }
+
+  /* ---------- findings ---------- */
+  .finding-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .finding-card { background: var(--card); border: 1px solid var(--line-card); border-radius: 14px; padding: 26px; }
+  .finding-title { font-weight: 600; font-size: 16px; color: #1B1710; margin-bottom: 8px; }
+  .finding-detail { font-size: 14px; color: var(--muted); }
+  .finding-total { text-align: center; margin-top: 34px; font-size: 19px; color: #6E6553; }
+  .finding-total strong { color: var(--ink-bright); }
+
+  /* ---------- ROI ---------- */
+  .roi-band { background: var(--bg-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 32px 0; }
+  .roi-inner { max-width: 1160px; margin: 0 auto; padding: 72px 28px; text-align: center; }
+
+  /* ---------- comparison ---------- */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .compare-card { border-radius: 14px; padding: 30px; }
+  .compare-card.trad { background: #F4EFE2; border: 1px solid #EAD9A0; }
+  .compare-card.gp { background: var(--card); border: 1.5px solid var(--gold); }
+  .compare-card .title { font-weight: 600; font-size: 17px; margin-bottom: 20px; }
+  .compare-card .row { display: flex; gap: 12px; font-size: 15px; margin-bottom: 14px; }
+  .compare-card .row:last-child { margin-bottom: 0; }
+
+  /* ---------- features ---------- */
+  .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .feature-card { background: var(--card); border: 1px solid var(--line-card); border-radius: 14px; padding: 26px; }
+  .feature-glyph { font-family: var(--mono); font-size: 22px; color: var(--gold-bright); margin-bottom: 14px; }
+  .feature-title { font-weight: 600; font-size: 17px; color: #1B1710; margin-bottom: 6px; }
+  .feature-desc { font-size: 14px; color: var(--muted); }
+  .feature-callout { background: var(--bg-deep); border: 1px solid #EAD9A0; border-radius: 14px; padding: 26px; display: flex; align-items: center; font-size: 15px; color: #6E6553; }
+
+  /* ---------- data ---------- */
+  .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .data-card { background: var(--card); border: 1px solid var(--line-card); border-radius: 14px; padding: 26px; font-size: 15px; color: #4A4433; }
+
+  /* ---------- pricing ---------- */
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+  /* Two-SKU variant lives in a class, NOT an inline style: an inline
+     grid-template-columns beats the 900px media query below and keeps two
+     squeezed columns on phones -- the featured card then overflows the
+     viewport and drags the whole page into horizontal scroll. */
+  .price-grid-two { grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: 0 auto; }
+  .price-card { background: var(--card); border: 1px solid var(--line-card); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; }
+  .price-card.featured { background: var(--card-hot); border: 1.5px solid var(--gold); position: relative; }
+  .save-pill { position: absolute; top: -11px; left: 30px; background: var(--gold); color: #22303A; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; font-weight: 600; padding: 4px 10px; border-radius: 6px; }
+  .price-name { font-weight: 600; font-size: 17px; color: #1B1710; }
+  .price-num { font-family: var(--serif); font-weight: 700; font-size: 42px; color: var(--ink-bright); margin: 12px 0; }
+  .price-num.gold { color: var(--gold-bright); }
+  /* CAD/USD ambiguity flagged by marketing (15.07) -- see pricing.html's
+     identical comment/rule. */
+  .price-num .currency-tag { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--faint); margin-left: 6px; vertical-align: middle; letter-spacing: 0.04em; }
+  .price-old { font-family: var(--mono); font-size: 17px; color: var(--faint); text-decoration: line-through; }
+  .price-desc { font-size: 14px; color: var(--muted); flex: 1; }
+  .price-card.featured .price-desc { color: #6E6553; }
+  .price-card .btn-order { margin-top: 22px; text-align: center; background: #EDE7D8; color: var(--ink-bright); font-weight: 600; font-size: 15px; padding: 12px; border-radius: 10px; }
+  .price-card.featured .btn-order { background: var(--gold); color: #22303A; }
+  .price-card .btn-order:hover { color: var(--ink-bright); }
+  .price-card.featured .btn-order:hover { color: #22303A; }
+
+  /* ---------- guarantee (canonical 2× block, PAYMENT_COPY_APPROVED.md) ---------- */
+  .guarantee-box { max-width: 780px; margin: 0 auto 40px; background: var(--card-hot); border: 1.5px solid var(--gold); border-radius: 20px; padding: 30px 36px; display: flex; gap: 22px; align-items: center; }
+  .guarantee-icon { flex: none; width: 52px; height: 52px; border-radius: 50%; background: #EDE7D8; display: flex; align-items: center; justify-content: center; }
+  .guarantee-title { font-family: var(--serif); font-weight: 700; font-size: 22px; color: var(--gold-pale); margin-bottom: 8px; letter-spacing: -0.01em; }
+  .guarantee-desc { font-size: 14.5px; color: #6E6553; line-height: 1.55; }
+  @media (max-width: 640px) { .guarantee-box { flex-direction: column; text-align: center; } }
+
+  /* ---------- trust strip (REAL signals only — Kairos SITE_MESSAGE §3) ---------- */
+  .trust-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+  .trust-item { background: var(--card); border: 1px solid var(--line-card); border-radius: 14px; padding: 20px 22px; }
+  .trust-item .t { font-weight: 600; font-size: 15px; color: #1B1710; margin-bottom: 6px; display: flex; align-items: flex-start; gap: 9px; }
+  .trust-item .t .ck { color: var(--gold-bright); flex: none; margin-top: 1px; }
+  .trust-item .d { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+  .trust-item .d a { color: var(--gold-bright); }
+  @media (max-width: 820px) { .trust-strip { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .trust-strip { grid-template-columns: 1fr; } }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { background: var(--card); border: 1px solid var(--line-card); border-radius: 14px; overflow: hidden; transition: background .4s ease, border-color .4s ease; }
+  .faq-item.open { background: var(--card-hot); border-color: var(--gold); box-shadow: 0 10px 34px rgba(60,50,20,.12); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 24px; cursor: pointer; user-select: none; }
+  .faq-q .qtext { font-weight: 600; font-size: 16.5px; color: var(--ink); }
+  .faq-item.open .faq-q .qtext { color: var(--ink-bright); }
+  .faq-q .caret { flex: none; color: var(--gold-bright); font-size: 14px; transition: transform .5s ease; }
+  .faq-item.open .faq-q .caret { transform: rotate(180deg); }
+  .faq-a { display: grid; grid-template-rows: 0fr; opacity: .35; transition: grid-template-rows .55s cubic-bezier(.16,1,.3,1), opacity .5s ease; }
+  .faq-item.open .faq-a { grid-template-rows: 1fr; opacity: 1; }
+  .faq-a > div { overflow: hidden; }
+  .faq-a-inner { display: flex; gap: 16px; padding: 0 24px 22px; }
+  .faq-accent { flex: none; width: 0; height: 2px; margin-top: 11px; background: var(--gold); border-radius: 2px; transition: width .6s cubic-bezier(.16,1,.3,1); }
+  .faq-item.open .faq-accent { width: 26px; }
+  .faq-a-text { font-size: 15px; line-height: 1.6; color: #6E6553; }
+
+  /* ---------- final CTA ---------- */
+  .cta-box { background: var(--bg-deep); border: 1px solid var(--line); border-radius: 20px; padding: 76px 28px; display: flex; flex-direction: column; align-items: center; }
+  .cta-box h2 { font-family: var(--serif); font-weight: 700; font-size: clamp(32px, 4.6vw, 44px); letter-spacing: -0.02em; color: var(--ink-bright); margin: 0 0 16px; text-align: center; }
+  .cta-box p { font-size: 18px; color: #6E6553; margin: 0 0 34px; text-align: center; }
+  .cta-privacy { width: 100%; max-width: 440px; margin-top: 40px; padding-top: 28px; border-top: 1px solid #E8E2D4; display: flex; align-items: center; justify-content: center; gap: 13px; }
+  .cta-privacy span { font-size: 15px; line-height: 1.5; color: var(--muted); text-align: left; }
+  .cta-privacy strong { color: var(--gold-pale); font-weight: 600; }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); background: var(--bg-footer); }
+  .footer-inner { padding: 40px 32px; display: flex; gap: 64px; flex-wrap: wrap; font-size: 14px; }
+  .footer-inner a { color: var(--muted); }
+  .footer-col { display: flex; flex-direction: column; gap: 8px; }
+  .footer-col b { font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  /* Copyright/contact as a proper bottom bar (full-width hairline,
+     centered) instead of floating alone top-right of the columns
+     -- matches index.html's footer-base; owner flagged the old
+     placement as visually unbalanced (17.07.2026). */
+  .footer-base { border-top: 1px solid var(--line); padding: 22px 28px; text-align: center; font-size: 13px; color: var(--faint); }
+
+  section.pad { padding: 56px 28px; }
+
+  @media (max-width: 900px) {
+    .finding-grid, .compare-grid, .feature-grid, .data-grid, .price-grid, .price-grid-two { grid-template-columns: 1fr; }
+    .topnav nav.nav-links { overflow-x: auto; scrollbar-width: none; }
+  }
+  /* Below 600px the topnav (brand + Pricing + Log in + gold CTA) is wider
+     than the viewport and forces page-level horizontal scroll. nav-links
+     hides (the footer carries the same links, incl. Pricing); the CTA
+     shrinks -- !important because it carries inline padding/font-size. */
+  @media (max-width: 600px) {
+    .topnav-inner { gap: 12px; }
+    .nav-links { display: none; }
+    .nav-aux { gap: 10px; }
+    .nav-aux > a[href="/pricing"] { display: none; }
+    .nav-aux a.btn-gold { padding: 7px 11px !important; font-size: 12.5px !important; white-space: nowrap; }
+  }
+
+  /* == Unified site header — one component on every page (owner 19.07: kill the
+     three-variant "dancing header"). Explicit hexes so it renders pixel-identical
+     regardless of each page's own tokens. == */
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,247,236,.85); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid #E8E2D4; }
+  .topnav .topnav-inner { max-width: 1160px; margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; gap: 30px; flex-wrap: nowrap; }
+  .topnav .brand { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: .14em; font-size: 15px; color: #1B1710; text-decoration: none; flex-shrink: 0; }
+  .topnav .logo-mark { width: 22px; height: 22px; flex-shrink: 0; }
+  .topnav .nav-links { display: flex; align-items: center; gap: 26px; }
+  .topnav .nav-links a { font-weight: 500; font-size: 14.5px; color: #6E6553; text-decoration: none; white-space: nowrap; }
+  .topnav .nav-links a:hover { color: #1B1710; }
+  .topnav .nav-links a.active-page, .topnav .nav-links a[aria-current="page"] { color: #83660F; }
+  .topnav .nav-aux { margin-left: auto; display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+  .topnav .nav-aux a:not(.nav-cta), .topnav .nav-aux .nav-logout { font-weight: 500; font-size: 14.5px; color: #6E6553; text-decoration: none; white-space: nowrap; background: none; border: none; padding: 0; font-family: inherit; cursor: pointer; }
+  .topnav .nav-aux a:not(.nav-cta):hover, .topnav .nav-aux .nav-logout:hover { color: #1B1710; }
+  .topnav .nav-aux a.active-page { color: #83660F; }
+  .topnav .nav-cta { display: inline-flex; align-items: center; background: #B5872E; color: #FBF7EC !important; font-weight: 600; border: none; border-radius: 9px; padding: 9px 18px; font-size: 14px; white-space: nowrap; text-decoration: none; flex-shrink: 0; transition: background .2s ease; }
+  .topnav .nav-cta:hover { background: #A67C12; color: #FBF7EC !important; }
+  @media (max-width: 860px) {
+    .topnav .topnav-inner { gap: 16px; }
+    .topnav .nav-links { display: none; }
+    .topnav .nav-aux { gap: 14px; margin-left: auto; }
+  }
+  @media (max-width: 560px) {
+    .topnav .topnav-inner { gap: 8px; padding-left: 14px; padding-right: 14px; }
+    .topnav .brand { font-size: 13.5px; letter-spacing: .1em; }
+    .topnav .nav-aux { gap: 8px; }
+    .topnav .nav-aux a[href="/pricing"] { display: none; }
+    .topnav .nav-aux form { display: none !important; }   /* Log out — reachable from the dashboard on mobile (beats inline style) */
+    .topnav .nav-cta { padding: 8px 12px; font-size: 12.5px; }
+  }
+
+  /* Mobile burger menu (owner 20.07: on <=860px .nav-links hid with no burger,
+     so a phone guest couldn't reach Methodology/About/Samples). Burger + a
+     dropdown panel expose every site link; desktop is untouched. */
+  .topnav { position: sticky; }
+  .nav-burger { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; background: none; border: 1px solid #D9C9A0; border-radius: 8px; color: #211C13; font-size: 17px; line-height: 1; cursor: pointer; flex-shrink: 0; padding: 0; }
+  .nav-burger:hover { border-color: #B5872E; color: #1B1710; }
+  .nav-panel { position: absolute; top: 100%; left: 0; right: 0; background: rgba(251,247,236,.97); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid #E8E2D4; box-shadow: 0 16px 34px -14px rgba(60,50,20,.14); flex-direction: column; padding: 6px 28px 14px; z-index: 60; }
+  .nav-panel[hidden] { display: none; }
+  .nav-panel a { padding: 13px 2px; font-size: 16px; font-weight: 500; color: #6E6553; text-decoration: none; border-top: 1px solid rgba(217,201,160,.6); }
+  .nav-panel a:first-child { border-top: none; }
+  .nav-panel a:hover { color: #1B1710; }
+  @media (min-width: 861px) { .nav-panel { display: none !important; } }
+  @media (max-width: 860px) {
+    .topnav .nav-burger { display: inline-flex; }
+    .nav-panel { display: flex; }
+  }
+</style>
+<style id="gp-light-cta">
+/* platinum primary CTA + quieted secondary buttons (light theme) */
+.btn-gold,.hero-actions .btn-gold,.topnav .nav-cta,.btn-order,.price-card .btn-order,.tier-order,.tier-card .tier-order,.cta-btn{
+  background:linear-gradient(180deg,#F5F7F9 0%,#C6CED5 100%)!important;color:#22303A!important;
+  border:1px solid #B4BDC4!important;border-bottom:4px solid #9BA6AE!important;text-shadow:none!important;
+  box-shadow:0 9px 22px rgba(120,135,150,.32),inset 0 1px 0 rgba(255,255,255,.7)!important;}
+.btn-ghost{background:transparent!important;border:1px solid #E3DECF!important;color:#6E6553!important;box-shadow:none!important;}
+.btn-ghost:hover{color:#211C13!important;border-color:#C9A227!important;}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="topnav-inner">
+    <a href="/" class="brand" aria-label="Golden Pod home"><svg class="logo-mark" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="7" fill="#C9A227"></circle><circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle><ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse></svg> GOLDEN&nbsp;POD</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/" class="active-page">Home</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+      <a href="/samples">Samples</a>
+    </nav>
+    <div class="nav-aux" id="nav-aux">
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:contact@golden-pod.com" id="nav-account">Log in</a>
+      <a href="mailto:contact@golden-pod.com" class="nav-cta" id="nav-cta">Get your report</a>
+    </div>
+    <button class="nav-burger" type="button" aria-label="Open menu" aria-controls="nav-panel" aria-expanded="false">&#9776;</button>
+  </div>
+  <nav class="nav-panel" id="nav-panel" aria-label="Site navigation" hidden>
+    <a href="/">Home</a>
+    <a href="/methodology">Methodology</a>
+    <a href="/about">About</a>
+    <a href="/samples">Samples</a>
+    <a href="/pricing">Pricing</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="kicker">Deterministic. Published formula.</div>
+  <h1>Find the money hiding in your books.</h1>
+  <p class="dek">Upload a file. Get back real dollars &mdash; duplicate payments, vendor typos, broken sequences &mdash; in seconds.</p>
+  <div class="hero-actions">
+    <a href="mailto:contact@golden-pod.com" class="btn-gold">Get your report</a>
+    <a href="/static/samples/dirty/report.html" class="btn-ghost" target="_blank" rel="noopener">See a real report &rarr;</a>
+    <a href="#features" class="btn-ghost">How it works &rarr;</a>
+  </div>
+  <div class="fineprint">Run it free &middot; your file is deleted the moment your report is ready.</div>
+</section>
+
+<!-- ============ GUARANTEE (hero-adjacent, canonical wording — Kairos SITE_MESSAGE §1) ============ -->
+<section class="wrap pad" id="guarantee" style="padding-top: 12px; padding-bottom: 28px; scroll-margin-top: 76px">
+  <div style="text-align: center; margin-bottom: 26px">
+    <div class="kicker">The audit that pays for itself</div>
+    <h2 class="sect" style="margin-bottom: 12px">Run it free. Pay only if it clears the bar.</h2>
+    <p style="font-size: 16px; color: var(--muted); max-width: 600px; margin: 0 auto">The engine scores your file for free. You only pay if it finds real money &mdash; here's the promise that makes that safe.</p>
+  </div>
+  <div class="guarantee-box">
+    <div class="guarantee-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l7 3v6c0 4.5-3 8.3-7 9.5C8 19.3 5 15.5 5 11V5l7-3z" stroke="#A67C12" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4.5" stroke="#A67C12" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div>
+      <div class="guarantee-title">The 2&times; Guarantee</div>
+      <div class="guarantee-desc">You pay the fee only if the report identifies at least 2&times; your fee in Duplicate-Payment Groups &mdash; two or more payments sharing an exact invoice number, an exact amount, and the same vendor, which you can verify line by line. If the report identifies less than 2&times; your fee &mdash; including zero &mdash; the full report is yours free. The threshold counts only exact-matched duplicate amounts found in your file (never a projected figure); sequence-gap and encoding notes are free context and do not count.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAMPLE FINDINGS ============ -->
+<!-- Deliberately conceptual, no dollar figures/vendor names/file specifics
+     (owner order 14.07.2026: homepage stays general, the actual "source ->
+     N errors -> result" proof lives on /samples, and the report's own
+     visual design stays a surprise until a client runs their own file). -->
+<section class="wrap pad" id="findings">
+  <div style="text-align: center; margin-bottom: 44px">
+    <div class="kicker">What it finds</div>
+    <h2 class="sect" style="margin-bottom: 12px">Three ways your ledger quietly loses money.</h2>
+    <p style="font-size: 17px; color: var(--muted); max-width: 600px; margin: 0 auto">Every check runs on every file, the same way, every time.</p>
+  </div>
+  <div class="finding-grid">
+    <div class="finding-card">
+      <div class="finding-title">Duplicate payments</div>
+      <div class="finding-detail">Same vendor, same amount, paid twice within days. Caught before your next payment run, not after.</div>
+    </div>
+    <div class="finding-card">
+      <div class="finding-title">Vendor aliases</div>
+      <div class="finding-detail">One vendor spelled three ways looks like three vendors. Spend hides in the split.</div>
+    </div>
+    <div class="finding-card">
+      <div class="finding-title">Sequence gaps</div>
+      <div class="finding-detail">A missing invoice number is either voided or lost. Worth knowing which.</div>
+    </div>
+  </div>
+  <div class="finding-total">See a real file, real numbers, and what got fixed &mdash; <a href="/samples" style="margin-left: 4px">open the Samples page &rarr;</a></div>
+</section>
+
+<!-- ============ ROI ============ -->
+<section class="roi-band">
+  <div class="roi-inner">
+    <div class="kicker">Why it pays for itself</div>
+    <h2 class="sect" style="margin-bottom: 16px">One finding often covers the whole thing.</h2>
+    <p style="font-size: 16px; color: var(--muted); max-width: 560px; margin: 0 auto">A single duplicate payment or vendor mix-up commonly costs more than the review itself. Real figures, from real sample files, are on the <a href="/samples">Samples page</a>.</p>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section class="wrap pad">
+  <div style="text-align: center; margin-bottom: 44px">
+    <div class="kicker">The alternative</div>
+    <h2 class="sect">Versus a traditional recovery audit.</h2>
+  </div>
+  <div class="compare-grid">
+    <div class="compare-card trad">
+      <div class="title" style="color: var(--muted)">Traditional recovery audit</div>
+      <div class="row" style="color: #6E6553"><span style="color: var(--faint)">&mdash;</span>Weeks of manual review</div>
+      <div class="row" style="color: #6E6553"><span style="color: var(--faint)">&mdash;</span>Contingency fee, 10&ndash;30% of what's found</div>
+      <div class="row" style="color: #6E6553"><span style="color: var(--faint)">&mdash;</span>Your data lives with a third-party firm</div>
+    </div>
+    <div class="compare-card gp">
+      <div class="title" style="color: var(--ink-bright)">Golden Pod</div>
+      <div class="row" style="color: var(--ink)"><span style="color: var(--green); font-weight: 600">&#10003;</span>Minutes, not weeks</div>
+      <div class="row" style="color: var(--ink)"><span style="color: var(--green); font-weight: 600">&#10003;</span>Fixed price, known before you start</div>
+      <div class="row" style="color: var(--ink)"><span style="color: var(--green); font-weight: 600">&#10003;</span>You keep the file, the findings, the call</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="wrap pad" id="features">
+  <div style="text-align: center; margin-bottom: 44px">
+    <div class="kicker">What it does</div>
+    <h2 class="sect">Built for real production files.</h2>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="feature-glyph">&#8677;</div><div class="feature-title">Any format</div><div class="feature-desc">CSV, Excel, JSON, nested archives &mdash; even damaged files.</div></div>
+    <div class="feature-card"><div class="feature-glyph">&#9711;</div><div class="feature-title">Any country</div><div class="feature-desc">Handles every date format, currency, and encoding.</div></div>
+    <div class="feature-card"><div class="feature-glyph">&#8942;</div><div class="feature-title">Millions of rows, minutes</div><div class="feature-desc">Including files too big for Excel to open.</div></div>
+    <div class="feature-card"><div class="feature-glyph">$</div><div class="feature-title">Finds what costs money</div><div class="feature-desc">Duplicate payments, one vendor spelled three ways.</div></div>
+    <div class="feature-card"><div class="feature-glyph">!</div><div class="feature-title">Never guesses silently</div><div class="feature-desc">Every uncertain row is flagged with its reason. <a href="/methodology">Formula published.</a></div></div>
+    <div class="feature-callout">Every check and the exact score are open &mdash; nothing behind a black box.</div>
+  </div>
+</section>
+
+<!-- ============ DATA ============ -->
+<section class="wrap pad" style="max-width: 900px">
+  <div style="text-align: center; margin-bottom: 36px">
+    <div class="kicker">Your data</div>
+    <h2 class="sect">What happens to your data.</h2>
+  </div>
+  <div class="data-grid">
+    <div class="data-card">Deleted the moment your report is ready. Interrupted uploads are purged within 48 hours.</div>
+    <div class="data-card">Every analysis runs in isolation &mdash; your data never mixes with anyone else's.</div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="wrap pad" id="pricing" style="scroll-margin-top: 76px">
+  <div style="text-align: center; margin-bottom: 30px">
+    <div class="kicker">Pricing</div>
+    <h2 class="sect" style="margin-bottom: 12px">Fixed price, shown before you buy.</h2>
+    <p style="font-size: 16px; color: var(--muted); max-width: 600px; margin: 0 auto">You see the price before anything is charged &mdash; and the <a href="#guarantee">2&times; Guarantee</a> means you only pay if the report clears twice your fee. Full comparison and volume pricing on the <a href="/pricing">pricing page &rarr;</a></p>
+  </div>
+  <div class="price-grid price-grid-two">
+    <div class="price-card">
+      <div class="price-name">Review</div>
+      <div class="price-num">$950<span class="currency-tag">USD</span></div>
+      <div class="price-desc">Every check, every finding in dollars &mdash; plus the ranked action plan. Browser report + PDF.</div>
+      <a href="mailto:contact@golden-pod.com" class="btn-order">Get your report</a>
+    </div>
+    <div class="price-card featured">
+      <div class="save-pill">CLEANED FILE INCLUDED</div>
+      <div class="price-name">Complete Package</div>
+      <div class="price-num gold" style="margin: 12px 0">$1,950<span class="currency-tag">USD</span></div>
+      <div class="price-desc">Everything in Review, plus your ledger back &mdash; fixed, with a full change log.</div>
+      <a href="mailto:contact@golden-pod.com" class="btn-order">Get your report</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="wrap pad" style="max-width: 820px">
+  <div style="text-align: center; margin-bottom: 40px">
+    <div class="kicker">FAQ</div>
+    <h2 class="sect">Questions we actually get.</h2>
+  </div>
+  <div class="faq-list" id="faq">
+    <div class="faq-item">
+      <div class="faq-q"><span class="qtext">No vendor or amount columns?</span><span class="caret">&#9662;</span></div>
+      <div class="faq-a"><div><div class="faq-a-inner"><span class="faq-accent"></span><div class="faq-a-text">You still get a full structural and data-quality pass &mdash; duplicates, missing values, format issues. Dollar findings appear only when vendor, amount, and date are certain. Nothing is guessed.</div></div></div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="qtext">Is it safe to upload financial files?</span><span class="caret">&#9662;</span></div>
+      <div class="faq-a"><div><div class="faq-a-inner"><span class="faq-accent"></span><div class="faq-a-text">Yes. Deleted right after your report, and every analysis runs isolated from everyone else's.</div></div></div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="qtext">How much does it cost?</span><span class="caret">&#9662;</span></div>
+      <div class="faq-a"><div><div class="faq-a-inner"><span class="faq-accent"></span><div class="faq-a-text">Two fixed tiers, see the exact numbers on <a href="/pricing">the pricing page</a>.</div></div></div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="qtext">Which formats work?</span><span class="caret">&#9662;</span></div>
+      <div class="faq-a"><div><div class="faq-a-inner"><span class="faq-accent"></span><div class="faq-a-text">CSV, TSV, Excel, JSON, ODS, and ZIP &mdash; even archives nested inside archives.</div></div></div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="qtext">How fast is it?</span><span class="caret">&#9662;</span></div>
+      <div class="faq-a"><div><div class="faq-a-inner"><span class="faq-accent"></span><div class="faq-a-text">Under a minute, even at millions of rows &mdash; including files Excel can't open.</div></div></div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="qtext">Do you keep my report?</span><span class="caret">&#9662;</span></div>
+      <div class="faq-a"><div><div class="faq-a-inner"><span class="faq-accent"></span><div class="faq-a-text">Yes, so you can re-download or share it later. Never your original file &mdash; only the findings.</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST (real signals only — Kairos SITE_MESSAGE §3) ============ -->
+<section class="wrap pad" style="padding-bottom: 40px">
+  <div style="text-align: center; margin-bottom: 30px">
+    <div class="kicker">Why you can trust it</div>
+    <h2 class="sect" style="margin-bottom: 12px">Built to be verified, not taken on faith.</h2>
+  </div>
+  <div class="trust-strip">
+    <div class="trust-item">
+      <div class="t"><span class="ck">&#10003;</span>Deterministic &amp; published</div>
+      <div class="d">Same file in, same findings out &mdash; the scoring formula is published in full. <a href="/methodology">Read the method &rarr;</a></div>
+    </div>
+    <div class="trust-item">
+      <div class="t"><span class="ck">&#10003;</span>Deleted within 48 hours</div>
+      <div class="d">Your file is erased by an automated sweep within 48 hours, not a promise you have to trust. <a href="/privacy">Privacy &rarr;</a></div>
+    </div>
+    <div class="trust-item">
+      <div class="t"><span class="ck">&#10003;</span>Private by design</div>
+      <div class="d">The free-preview identifier is a one-way salted hash of your email. We don't keep your ledger. <a href="/privacy">How &rarr;</a></div>
+    </div>
+    <div class="trust-item">
+      <div class="t"><span class="ck">&#10003;</span>Everything in writing</div>
+      <div class="d">Terms, Privacy, the DPA, and the 2&times; Guarantee &mdash; all in one place, readable any time. <a href="/legal">Legal &rarr;</a></div>
+    </div>
+    <div class="trust-item">
+      <div class="t"><span class="ck">&#10003;</span>A real company</div>
+      <div class="d">Golden Pod is a service of Assay Systems, Ottawa, Ontario, Canada &mdash; governed by Ontario law.</div>
+    </div>
+    <div class="trust-item">
+      <div class="t"><span class="ck">&#10003;</span>Honest samples</div>
+      <div class="d">Every sample file is synthetic. None is a client's data. <a href="/samples">See them &rarr;</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="wrap pad" id="cta" style="padding-bottom: 80px">
+  <div class="cta-box">
+    <h2>Run your file.</h2>
+    <p>The method is published. The findings are in dollars.</p>
+    <a href="mailto:contact@golden-pod.com" class="btn-gold" style="padding: 15px 32px; font-size: 16px">Get your report</a>
+    <div class="cta-privacy">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="flex: none" aria-hidden="true"><path d="M12 2l7 3v6c0 4.5-3 8.3-7 9.5C8 19.3 5 15.5 5 11V5l7-3z" stroke="#A67C12" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4.5" stroke="#A67C12" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Your file is <strong>permanently deleted</strong> the moment your report is ready.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap footer-inner">
+    <div style="max-width: 280px">
+      <div style="display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; margin-bottom: 10px; color: var(--ink-bright)">
+        <svg width="22" height="22" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <circle cx="13" cy="13" r="7" fill="#C9A227"></circle>
+          <circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle>
+          <ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse>
+        </svg>
+        GOLDEN POD
+      </div>
+      <div style="color: var(--muted); line-height: 1.6">Deterministic analysis of accounting files. Findings in dollars, formula published.</div>
+      <div style="color: var(--faint); line-height: 1.6; font-size: 13px; margin-top: 12px">A service of Assay Systems, Ottawa, Ontario, Canada.</div>
+    </div>
+    <div class="footer-col">
+      <b>Product</b>
+      <a href="mailto:contact@golden-pod.com">Get your report</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:contact@golden-pod.com">Log in</a>
+      <a href="/samples">Samples</a>
+    </div>
+    <div class="footer-col">
+      <b>Company</b>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="footer-col">
+      <b>Legal</b>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/legal">Legal</a>
+    </div>
+  </div>
+  <div class="footer-base">contact@golden-pod.com &middot; &copy; 2026 Golden Pod</div>
+</footer>
+
+<script>
+  // FAQ accordion -- single item open at a time, ported from the design's
+  // DCLogic state machine (FaqList.dc.html) to plain DOM.
+  for (const item of document.querySelectorAll(".faq-item")) {
+    item.querySelector(".faq-q").addEventListener("click", () => {
+      const wasOpen = item.classList.contains("open");
+      for (const other of document.querySelectorAll(".faq-item.open")) other.classList.remove("open");
+      if (!wasOpen) item.classList.add("open");
+    });
+  }
+</script>
+
+<script>
+/* Unified header auth-swap: static pages can't know server auth, so read the
+   non-httpOnly gp_authed flag cookie and reflect the signed-in state the same
+   way on every page (Log in -> Dashboard + Log out; CTA -> Upload a file). */
+(function(){
+  function authed(){ return document.cookie.split('; ').some(function(c){ return c.indexOf('gp_authed=') === 0; }); }
+  if (!authed()) return;
+  var acc = document.getElementById('nav-account');
+  if (acc && !acc.dataset.gpSwapped) {
+    acc.dataset.gpSwapped = '1';
+    acc.textContent = 'Dashboard';
+    acc.setAttribute('href', '/account/dashboard');
+    var f = document.createElement('form');
+    f.method = 'post'; f.action = '/account/logout'; f.style.display = 'inline';
+    f.innerHTML = '<button type="submit" class="nav-logout">Log out</button>';
+    acc.insertAdjacentElement('afterend', f);
+  }
+  var cta = document.getElementById('nav-cta');
+  if (cta) cta.textContent = 'Upload a file';
+})();
+</script>
+
+<script>
+/* Burger menu: toggle the dropdown, close on link click / outside click / Escape. */
+(function(){
+  var burger = document.querySelector('.nav-burger');
+  var panel = document.getElementById('nav-panel');
+  if (!burger || !panel) return;
+  function esc(e){ if (e.key === 'Escape') { close(); burger.focus(); } }
+  function outside(e){ if (!panel.contains(e.target) && !burger.contains(e.target)) close(); }
+  function open(){ panel.hidden = false; burger.setAttribute('aria-expanded','true'); document.addEventListener('click', outside, true); document.addEventListener('keydown', esc); }
+  function close(){ panel.hidden = true; burger.setAttribute('aria-expanded','false'); document.removeEventListener('click', outside, true); document.removeEventListener('keydown', esc); }
+  burger.addEventListener('click', function(e){ e.stopPropagation(); if (panel.hidden) open(); else close(); });
+  panel.addEventListener('click', function(e){ if (e.target.tagName === 'A') close(); });
+})();
+</script>
+</body>
+</html>

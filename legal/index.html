@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Legal &mdash; Everything you agree to | Golden Pod</title>
+<meta name="description" content="The full Golden Pod agreement in one place: Terms of Service, Privacy Policy, Data Processing Addendum, and the 2× Guarantee. What you agree to when you create an account.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+<link rel="stylesheet" href="/static/fonts/fonts.css">
+<style>
+  :root {
+    --bg: #FBF7EC; --bg-deep: #F3EEE1; --bg-footer: #F3EEE1;
+    --card: #FFFFFF; --card-hot: #FFF6E4; --card-hot-border: #E3D9BE;
+    --line: #E8E2D4; --line-card: #EDE7D8;
+    --ink: #211C13; --ink-bright: #1B1710;
+    --muted: #6E6553; --faint: #8C8774;
+    --gold: #B5872E; --gold-bright: #A67C12; --gold-pale: #83660F;
+    --serif: 'Space Grotesk', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'IBM Plex Sans', system-ui, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--gold-bright); text-decoration: none; }
+  a:hover { color: var(--gold-pale); }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+  .kicker { font-family: var(--mono); font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-bright); text-align: center; margin-bottom: 14px; }
+
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(251,247,236,.85); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .topnav-inner { padding: 16px 0; display: flex; align-items: center; gap: 36px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; letter-spacing: 0.14em; font-size: 15px; color: var(--ink-bright); }
+  .logo-mark { width: 22px; height: 22px; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: 28px; margin-left: 8px; }
+  .nav-links a { font-weight: 500; font-size: 15px; color: var(--muted); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-aux { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+  .nav-aux > a:not(.btn-gold) { font-weight: 500; font-size: 15px; color: var(--muted); }
+  .nav-aux > a:not(.btn-gold):hover { color: var(--ink); }
+  .btn-gold { display: inline-block; background: var(--gold); color: #22303A; font-weight: 600; border-radius: 9px; text-align: center; }
+  .btn-gold:hover { background: var(--gold-bright); color: #22303A; }
+
+  .legal { max-width: 820px; margin: 0 auto; padding: 8px 28px 40px; }
+  .legal .meta { font-family: var(--mono); font-size: 13px; color: var(--faint); text-align: center; margin-bottom: 40px; }
+  .legal h2 { font-family: var(--serif); font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--ink-bright); margin: 40px 0 14px; }
+  .legal p { font-size: 16px; color: var(--ink); margin: 0 0 14px; }
+  .legal strong { color: var(--ink-bright); }
+
+  .assent { background: var(--card-hot); border-left: 4px solid var(--gold); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 18px 0 8px; }
+  .assent p { font-size: 15.5px; color: #4A4433; margin: 0; }
+
+  .doc-list { display: flex; flex-direction: column; gap: 14px; margin: 20px 0 8px; }
+  .doc { display: flex; gap: 18px; align-items: baseline; justify-content: space-between; background: var(--card); border: 1px solid var(--line-card); border-radius: 14px; padding: 20px 24px; }
+  .doc .t { display: block; font-weight: 600; font-size: 16.5px; color: #1B1710; margin-bottom: 3px; }
+  .doc .d { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .doc .go { font-family: var(--mono); font-size: 13.5px; white-space: nowrap; flex: none; }
+
+  footer { border-top: 1px solid var(--line); background: var(--bg-footer); }
+  .footer-inner { padding: 40px 32px; display: flex; gap: 64px; flex-wrap: wrap; font-size: 14px; }
+  .footer-inner a { color: var(--muted); }
+  .footer-col { display: flex; flex-direction: column; gap: 8px; }
+  .footer-col b { font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .footer-base { border-top: 1px solid var(--line); padding: 22px 28px; text-align: center; font-size: 13px; color: var(--faint); }
+
+  @media (max-width: 900px) {
+    .topnav nav.nav-links { overflow-x: auto; scrollbar-width: none; }
+    .doc { flex-direction: column; gap: 6px; }
+  }
+  @media (max-width: 600px) {
+    .topnav-inner { gap: 12px; }
+    .nav-links { display: none; }
+    .nav-aux { gap: 10px; }
+    .nav-aux > a[href="/pricing"] { display: none; }
+    .nav-aux a.btn-gold { padding: 7px 11px !important; font-size: 12.5px !important; white-space: nowrap; }
+  }
+</style>
+<style id="gp-light-cta">
+/* platinum primary CTA + quieted secondary buttons (light theme) */
+.btn-gold,.hero-actions .btn-gold,.topnav .nav-cta,.btn-order,.price-card .btn-order,.tier-order,.tier-card .tier-order,.cta-btn{
+  background:linear-gradient(180deg,#F5F7F9 0%,#C6CED5 100%)!important;color:#22303A!important;
+  border:1px solid #B4BDC4!important;border-bottom:4px solid #9BA6AE!important;text-shadow:none!important;
+  box-shadow:0 9px 22px rgba(120,135,150,.32),inset 0 1px 0 rgba(255,255,255,.7)!important;}
+.btn-ghost{background:transparent!important;border:1px solid #E3DECF!important;color:#6E6553!important;box-shadow:none!important;}
+.btn-ghost:hover{color:#211C13!important;border-color:#C9A227!important;}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="wrap topnav-inner">
+    <a href="/" class="brand" aria-label="Golden Pod home">
+      <svg class="logo-mark" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+        <circle cx="13" cy="13" r="7" fill="#C9A227"></circle>
+        <circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle>
+        <ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse>
+      </svg>
+      GOLDEN&nbsp;POD
+    </a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+      <a href="/samples">Samples</a>
+    </nav>
+    <div class="nav-aux">
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:contact@golden-pod.com">Log in</a>
+      <a href="mailto:contact@golden-pod.com" class="btn-gold" style="padding: 9px 18px; font-size: 14px">Get your report</a>
+    </div>
+  </div>
+</header>
+
+<section class="wrap" style="max-width: 820px; padding-top: 84px; padding-bottom: 20px; text-align: center">
+  <div class="kicker">Legal</div>
+  <h1 style="font-family: var(--serif); font-weight: 700; font-size: clamp(34px, 5vw, 50px); line-height: 1.06; letter-spacing: -0.02em; color: var(--ink-bright); margin: 0 0 18px">Everything you agree to</h1>
+  <p style="font-size: 18px; color: #6E6553; max-width: 620px; margin: 0 auto">By creating a Golden Pod account you agree to the Terms of Service and confirm you have read the Privacy Policy. Here is everything you are agreeing to, in one place, readable any time &mdash; no login required.</p>
+</section>
+
+<div class="legal">
+  <div class="meta">Terms 15 July 2026 &middot; Privacy 15 July 2026</div>
+
+  <h2>What you accept at sign-in</h2>
+  <div class="assent">
+    <p>I have read and agree to the <a href="/terms" target="_blank" rel="noopener">Terms of Service</a>, and have read and understood the <a href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>. I am at least 16, and if I am using Golden Pod for an organisation I am authorised to accept these on its behalf.</p>
+  </div>
+  <p>That statement is the box you tick on the sign-in form, before any account is created. Ticking it and continuing is your agreement. We record the date, your IP address, and the document versions you accepted &mdash; nothing more. The Privacy Policy is something you <strong>acknowledge you have read</strong>, not a waiver of any data right you hold.</p>
+
+  <h2>The documents</h2>
+  <div class="doc-list">
+    <a class="doc" href="/terms">
+      <span><span class="t">Terms of Service</span><span class="d">The agreement that governs your use of Golden Pod &mdash; what the service is, the disclaimers, and the limits of liability. Ontario, Canada law.</span></span>
+      <span class="go">Read &rarr;</span>
+    </a>
+    <a class="doc" href="/privacy">
+      <span><span class="t">Privacy Policy</span><span class="d">What we collect, how fast we delete your uploaded file (within 48 hours), who processes your data, and the rights you have. Written to a GDPR-grade standard.</span></span>
+      <span class="go">Read &rarr;</span>
+    </a>
+    <a class="doc" href="/pricing">
+      <span><span class="t">The 2&times; Guarantee</span><span class="d">You pay only if the report identifies at least 2&times; your fee in Duplicate-Payment Groups; below that &mdash; including zero &mdash; the full report is free. Stated in full on Pricing and in Terms &sect;5.</span></span>
+      <span class="go">See it &rarr;</span>
+    </a>
+    <a class="doc" href="mailto:contact@golden-pod.com?subject=Data%20Processing%20Addendum">
+      <span><span class="t">Data Processing Addendum</span><span class="d">For accounting firms and other controllers: the DPA governs data you upload on your own clients' behalf, where you are the controller and we are your processor. Available on request.</span></span>
+      <span class="go">Request &rarr;</span>
+    </a>
+  </div>
+
+  <p style="margin-top: 24px; color: var(--muted)">Questions about any of this? Write to <a href="mailto:contact@golden-pod.com">contact@golden-pod.com</a> &mdash; Golden Pod, a service of Assay Systems, 150 Gloucester St, Ottawa, ON K2P 0A6, Canada.</p>
+</div>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div style="max-width: 280px">
+      <div style="display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; margin-bottom: 10px; color: var(--ink-bright)">
+        <svg width="22" height="22" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <circle cx="13" cy="13" r="7" fill="#C9A227"></circle>
+          <circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle>
+          <ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse>
+        </svg>
+        GOLDEN POD
+      </div>
+      <div style="color: var(--muted); line-height: 1.6">Deterministic analysis of accounting files. Findings in dollars, formula published.</div>
+    </div>
+    <div class="footer-col">
+      <b>Product</b>
+      <a href="mailto:contact@golden-pod.com">Get your report</a>
+      <a href="/pricing">Pricing</a>
+      <a href="mailto:contact@golden-pod.com">Log in</a>
+      <a href="/samples">Samples</a>
+    </div>
+    <div class="footer-col">
+      <b>Company</b>
+      <a href="/methodology">Methodology</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="footer-col">
+      <b>Legal</b>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/legal">Legal</a>
+    </div>
+  </div>
+  <div class="footer-base">contact@golden-pod.com &middot; &copy; 2026 Golden Pod</div>
+</footer>
+</body>
+</html>
