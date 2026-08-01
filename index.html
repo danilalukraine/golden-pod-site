@@ -553,7 +553,6 @@
 (function(){
   function authed(){ return document.cookie.split('; ').some(function(c){ return c.indexOf('gp_authed=') === 0; }); }
   if (!authed()) return;
-  var acc = document.getElementById('nav-account');
   if (acc && !acc.dataset.gpSwapped) {
     acc.dataset.gpSwapped = '1';
     acc.textContent = 'Dashboard';
