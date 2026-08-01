@@ -261,7 +261,8 @@
     </nav>
     <div class="nav-aux" id="nav-aux">
       <a href="/pricing">Pricing</a>
-      <a href="mailto:contact@golden-pod.com?subject=Golden%20Pod%20Report%20Request">Get your report</a>
+      <a href="mailto:contact@golden-pod.com" id="nav-account">Log in</a>
+      <a href="mailto:contact@golden-pod.com" class="nav-cta" id="nav-cta">Get your report</a>
     </div>
     <button class="nav-burger" type="button" aria-label="Open menu" aria-controls="nav-panel" aria-expanded="false">&#9776;</button>
   </div>
@@ -553,13 +554,6 @@
 (function(){
   function authed(){ return document.cookie.split('; ').some(function(c){ return c.indexOf('gp_authed=') === 0; }); }
   if (!authed()) return;
-  if (acc && !acc.dataset.gpSwapped) {
-    acc.dataset.gpSwapped = '1';
-    acc.textContent = 'Dashboard';
-    acc.setAttribute('href', '/account/dashboard');
-    var f = document.createElement('form');
-    f.method = 'post'; f.action = '/account/logout'; f.style.display = 'inline';
-    f.innerHTML = '<button type="submit" class="nav-logout">Log out</button>';
     acc.insertAdjacentElement('afterend', f);
   }
   var cta = document.getElementById('nav-cta');
@@ -581,8 +575,5 @@
   panel.addEventListener('click', function(e){ if (e.target.tagName === 'A') close(); });
 })();
 </script>
-  <div style="text-align: center; padding: 20px; color: #6E6553; font-size: 14px;">
-    Questions? Email us: <strong><a href="mailto:contact@golden-pod.com" style="color: #C9A227; text-decoration: none;">contact@golden-pod.com</a></strong>
-  </div>
 </body>
 </html>
