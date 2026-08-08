@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Golden Pod &mdash; Strategy Summary 0f2a19dc</title>
+<title>Golden Pod &mdash; Structural Review d25957c1</title>
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="stylesheet" href="/static/fonts/fonts.css"><link rel="stylesheet" href="/static/fonts/report-fonts.css">
 <style>
   :root {
     --paper: #FCFBF8; --ink: #22242A; --read: #2E2822; --ink-soft: #55575F; --ink-faint: #8A8B90;
-    --navy: #B07E1E; --navy-2: #8A6714; --oxblood: #A83A2C; --gold: #B58A2E;
+    --navy: #14264F; --navy-2: #1E3A7A; --oxblood: #A83A2C; --gold: #B58A2E;
     --hair: #DAD6C9; --hair-soft: #E7E4DA;
     --display: 'Space Grotesk', 'Segoe UI', sans-serif;
     --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
@@ -93,7 +93,7 @@
   .finding p { font-family: var(--serif); font-size: 16.5px; line-height: 1.72; color: var(--read); margin: 13px 0 0; max-width: 64ch; }
   .finding p b { color: #1B1712; font-weight: 600; }
   .no-find { font-family: var(--serif); font-size: 16.5px; color: var(--read); }
-  .handoff { background: #1A1712; color: #fff; margin-top: clamp(40px,5vw,60px); padding: clamp(32px,4vw,48px) clamp(28px,4vw,54px); display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; position: relative; overflow: hidden; }
+  .handoff { background: var(--navy); color: #fff; margin-top: clamp(40px,5vw,60px); padding: clamp(32px,4vw,48px) clamp(28px,4vw,54px); display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; position: relative; overflow: hidden; }
   .handoff::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--gold); }
   .handoff-figure { font-family: var(--display); font-weight: 600; font-size: clamp(30px,4vw,44px); line-height: 1; color: var(--gold); letter-spacing: -.02em; margin: 4px 0 2px; font-variant-numeric: lining-nums; }
   .handoff-figure span { display: block; font-family: var(--serif); font-weight: 400; font-size: 14.5px; color: #C4D0E6; letter-spacing: 0; margin-top: 7px; }
@@ -123,27 +123,6 @@
     body { background: #fff; }
     .gp-doc { box-shadow: none; max-width: none; padding: 0; }
   }
-
-  .fhead { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
-  .famount { font-family: var(--mono); font-weight: 600; font-size: 18px; color: var(--ink); font-variant-numeric: tabular-nums; }
-  .famount.hot { color: var(--oxblood); }
-  .flag.note { background: #FAF4E6; color: var(--navy); border: 1px solid var(--hair); }
-  .flag.note::before { background: var(--navy); }
-  .finding .tag { font-family: var(--serif); font-size: 16px; line-height: 1.62; color: var(--read); margin: 14px 0 0; padding-left: 20px; text-indent: -20px; max-width: 62ch; }
-  .finding .tag .arw { color: var(--navy); font-weight: 700; margin-right: 8px; }
-  .rollup-link { text-decoration: none; color: inherit; }
-  .rollup-title { font-family: var(--display); font-size: 17px; font-weight: 600; letter-spacing: -.01em; color: var(--ink); }
-  .rollup-cta { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--navy-2); white-space: nowrap; }
-  .actions { display: flex; flex-direction: column; }
-  .arow { display: flex; gap: 12px; padding: 16px 0; border-bottom: .5px solid var(--hair-soft); font-family: var(--serif); font-size: 16.5px; color: var(--read); line-height: 1.62; max-width: 66ch; }
-  .arow:last-child { border-bottom: none; }
-  .arow .arw { color: var(--navy); font-weight: 700; flex: none; }
-  /* Interpretation cards (risks/opportunities): the lead figure can be a full
-     dollar amount ($17,668), not a 2-digit index -- size the figure column to
-     its content so a long number never spills into the prose (owner 20.07). */
-  .finding.interp { grid-template-columns: minmax(84px, max-content) 1fr; }
-  .finding.interp .idx { font-size: 20px; white-space: nowrap; }
-  @media (max-width: 520px) { .finding.interp { grid-template-columns: minmax(72px, max-content) 1fr; } }
 </style>
 </head>
 <body>
@@ -159,117 +138,87 @@
       <div class="wordmark">Golden&nbsp;Pod<small>Data Integrity &amp; Assurance</small></div>
     </div>
     <div class="meta-block">
-      Report <b>0f2a19dc</b><br>
+      Report <b>d25957c1</b><br>
       Issued <b></b><br>
       Confidential &mdash; Client Copy
     </div>
   </header>
 
   <nav class="navrail" aria-label="Report sections">
-    <a href="./report.html"><span class="n">01</span> Structural</a>
+    <a href="./report.html" class="active"><span class="n">01</span> Structural</a>
     <a href="./report-financial.html"><span class="n">02</span> Financial</a>
-    <a href="./report-strategy.html" class="active"><span class="n">03</span> Strategy</a>
+    <a href="./report-strategy.html"><span class="n">03</span> Strategy</a>
   </nav>
 
   <section class="hero">
     <div class="hero-lede">
-      <div class="eyebrow">03 &mdash; Strategy Summary</div>
-      <h1>What to do next, <em>before your next payment run.</em></h1>
-      <p class="lede">This is the shortlist. Every issue is ranked by what it puts at risk and paired with the single action that resolves it &mdash; no theory, no dashboards to read. Work top to bottom and the exposure closes itself.</p>
+      <div class="eyebrow">01 &mdash; Structural Review</div>
+      <h1>The bones of your books, <em>examined and scored.</em></h1>
+      <p class="lede">Before a single figure is interpreted, we assess whether the underlying records can be trusted to carry it. This review measures the structural health of 1 source table &mdash; their completeness, their uniqueness, and the small inconsistencies that quietly distort everything downstream.</p>
     </div>
     <div class="score-plate">
-      <div class="cap">At risk · verify first</div>
-      <div class="score-big"><span class="val" style="color:var(--oxblood)">$17,668</span></div>
+      <div class="cap">Structural Integrity Score</div>
+      <div class="score-big"><span class="val">100</span><span class="den">/100</span></div>
       <div class="goldline"></div>
-      <div class="score-note"><span class="band">17 issues</span> traced from your file — and $1,412,286 more in spend distorted by inconsistent records. Each is paired below with the one action that closes it.</div>
+      <div class="score-note"><span class="band">No structural issues found.</span> 1 table across 150 rows. Findings below are flagged for correction and resolved in the cleaned file.</div>
     </div>
   </section>
 
   <section class="section">
-    <div class="section-head"><span class="num-label">In order of urgency</span><h2>The shortlist</h2><span class="rule"></span></div>
+    <div class="section-head"><span class="num-label">Dimensions</span><h2>Completeness &amp; Uniqueness</h2><span class="rule"></span></div>
+    <div class="twin">
+      <div class="metric">
+        <div class="cap"><span class="name">Completeness</span><span class="of">Populated cells / total</span></div>
+        <div class="fig"><span class="v">100.0</span><span class="pct">%</span></div>
+        <p class="desc">The share of required cells that carry a value across every table. What is missing is listed below and backfilled where a reliable match exists.</p>
+        <div class="meter"><i style="width:100.0%"></i></div>
+      </div>
+      <div class="metric">
+        <div class="cap"><span class="name">Uniqueness</span><span class="of">Distinct rows / total</span></div>
+        <div class="fig"><span class="v">100.0</span><span class="pct">%</span></div>
+        <p class="desc">The share of rows that are distinct. Exact duplicates are removed in the cleaned file, with the originals preserved for your record.</p>
+        <div class="meter"><i style="width:100.0%"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="num-label">By source table</span><h2>Per-Table Integrity</h2><span class="rule"></span></div>
+    <div style="overflow-x:auto;">
+    <table class="ledger">
+      <thead><tr><th>Source file</th><th class="hide-sm">Rows</th><th class="hide-sm">Distribution</th><th>Status</th><th class="r">Score</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="tbl-name">ap_export_clean.csv</div></td>
+          <td class="hide-sm"><span class="tbl-rows">150 rows</span></td>
+          <td class="hide-sm"><span class="bar"><i style="width:100%"></i></span></td>
+          <td><span class="status ok"><span class="dot"></span>Clean</span></td>
+          <td class="r"><span class="tscore">100<span class="s">/100</span></span></td>
+        </tr></tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="num-label">What we found</span><h2>Structural Findings</h2><span class="rule"></span></div>
     <div class="findings">
-      <div class="finding">
-        <div class="idx">01</div>
-        <div>
-          <div class="fhead"><span class="flag note">Duplicate payment</span><span class="famount hot">$4,498</span></div>
-          <p>Possible duplicate payment -- Zenith IT Consulting, $4,498 paid 2 time(s)</p>
-          <div class="tag"><span class="arw">&rarr;</span> Reverse the duplicate payment of invoice INV-2026-2153 to Zenith IT Consulting ($4,498, paid 2 times on 2026-02-19) before your next payment run.</div>
-        </div>
-      </div>
-      <div class="finding">
-        <div class="idx">02</div>
-        <div>
-          <div class="fhead"><span class="flag note">Duplicate payment</span><span class="famount hot">$4,068</span></div>
-          <p>Possible duplicate payment -- Delta Freight Solutions, $4,068 paid 2 time(s)</p>
-          <div class="tag"><span class="arw">&rarr;</span> Reverse the duplicate payment of invoice INV-2026-2924 to Delta Freight Solutions ($4,068, paid 2 times on 2026-05-26) before your next payment run.</div>
-        </div>
-      </div>
-      <div class="finding">
-        <div class="idx">03</div>
-        <div>
-          <div class="fhead"><span class="flag note">Duplicate payment</span><span class="famount hot">$3,972</span></div>
-          <p>Possible duplicate payment -- BluePeak Marketing, $3,972 paid 2 time(s)</p>
-          <div class="tag"><span class="arw">&rarr;</span> Reverse the duplicate payment of invoice INV-2026-2601 to BluePeak Marketing ($3,972, paid 2 times on 2026-02-17) before your next payment run.</div>
-        </div>
-      </div>
-      <div class="finding">
-        <div class="idx">04</div>
-        <div>
-          <div class="fhead"><span class="flag note">Duplicate payment</span><span class="famount hot">$1,635</span></div>
-          <p>Possible duplicate payment -- Quartz Design Studio, $1,635 paid 2 time(s)</p>
-          <div class="tag"><span class="arw">&rarr;</span> Reverse the duplicate payment of invoice INV-2026-3675 to Quartz Design Studio ($1,635, paid 2 times on 2026-03-08) before your next payment run.</div>
-        </div>
-      </div>
-      <div class="finding">
-        <div class="idx">05</div>
-        <div>
-          <div class="fhead"><span class="flag note">Duplicate payment</span><span class="famount hot">$1,036</span></div>
-          <p>Possible duplicate payment -- Zenith IT Consulting, $1,036 paid 2 time(s)</p>
-          <div class="tag"><span class="arw">&rarr;</span> Reverse the duplicate payment of invoice INV-2026-3071 to Zenith IT Consulting ($1,036, paid 2 times on 2026-01-03) before your next payment run.</div>
-        </div>
-      </div>
-      <a class="finding rollup-link" href="./report-financial.html">
-        <div class="idx">+</div>
-        <div>
-          <div class="rollup-title">+12 more findings ($2,459 at risk, $1,412,286 spend affected)</div>
-          <p>The complete list, every row and amount, lives in the Financial Review. <span class="rollup-cta">Open report &rarr;</span></p>
-        </div>
-      </a></div>
+        <div class="finding">
+          <div class="idx">01</div>
+          <div>
+            <span class="flag">Flagged by Golden Pod</span>
+            <p>No critical data-quality issues were detected in this submission.</p>
+          </div>
+        </div></div>
     <div class="dl-rail">
       <a href="mailto:contact@golden-pod.com">Download PDF</a>
       <a href="mailto:contact@golden-pod.com">Download all (ZIP)</a>
-      <a href="./report-financial.html">&larr; Financial Review</a>
+      
     </div>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><span class="num-label">What it means</span><h2>Business risks</h2><span class="rule"></span></div>
-    <div class="findings">
-      <div class="finding interp">
-        <div class="idx">12</div>
-        <div><p>12 duplicate or near-duplicate rows (including records spelled or formatted differently) can cause double-counting in downstream reporting or billing.</p></div>
-      </div>
-      <div class="finding interp">
-        <div class="idx">$17,668</div>
-        <div><p>11 same-vendor, same-amount payment pairs totaling $17,668 at risk were flagged close together in time -- if both halves of a pair are genuine payments, this is a duplicate payment risk. Itemized in Critical Findings; verify with AP before your next payment run.</p></div>
-      </div></div>
-  </section>
-  <section class="section">
-    <div class="section-head"><span class="num-label">Do this</span><h2>Recommended actions</h2><span class="rule"></span></div>
-    <div class="actions"><div class="arow"><span class="arw">&rarr;</span><span>Prevention control -- pre-payment match: require vendor + amount + invoice number to be unique against the trailing 90 days before any payment is released, so a duplicate is caught before it leaves the account, not after.</span></div><div class="arow"><span class="arw">&rarr;</span><span>Prevention control -- vendor-master hygiene: enforce one canonical vendor record and block near-duplicate names at creation, so spend stops fragmenting across spellings and reporting stays true.</span></div><div class="arow"><span class="arw">&rarr;</span><span>0-30 days (stop the bleed): reverse or place a hold on the 11 flagged duplicate payments (~$17,668 at risk) before the next payment run; confirm each with AP.</span></div><div class="arow"><span class="arw">&rarr;</span><span>30-60 days (fix the process): stand up the pre-payment vendor+amount+invoice match; consolidate the 5 fragmented vendor record groups (~$1,412,286 of spend) into canonical names.</span></div><div class="arow"><span class="arw">&rarr;</span><span>60-90 days (make it durable): run this ledger check every close as a standing control and track the duplicate-catch rate month over month -- proof the leak stayed shut, not a one-time cleanup.</span></div></div>
-  </section>
-
-  <section class="handoff">
-    <div class="l">
-      <div class="eyebrow on-navy">The bottom line</div>
-      <h2>$17,668 at risk requires verification before your next payment run; $1,412,286 of spend needs vendor-record cleanup for reporting accuracy. Recommended: work items 1-5 top to bottom -- they are ordered by urgency, not discovery order.</h2>
-    </div>
-    <a class="arrow" href="mailto:contact@golden-pod.com" aria-label="Download the full report">&rarr;</a>
   </section>
 
   <div class="colophon">
-    <span>Golden Pod &mdash; Strategy Summary</span>
-    <span>Report 0f2a19dc &middot; Page 03 of 03</span>
+    <span>Golden Pod &mdash; Structural Review</span>
+    <span>Report d25957c1 &middot; Page 01 of 03</span>
   </div>
 
 </article>
