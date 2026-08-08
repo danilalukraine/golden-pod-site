@@ -165,7 +165,7 @@
 
 <header class="topnav">
   <div class="topnav-inner">
-    <a href="/" class="brand" aria-label="Golden Pod home"><svg class="logo-mark" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="7" fill="#C9A227"></circle><circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle><ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse></svg> GOLDEN&nbsp;POD</a>
+    <a href="/" class="brand" aria-label="Golden Pod home"><img class="logo-mark" src="/static/mark-128.png" alt="" width="26" height="26" decoding="async"> GOLDEN&nbsp;POD</a>
     <nav class="nav-links" aria-label="Main">
       <a href="/">Home</a>
       <a href="/methodology">Methodology</a>
@@ -223,8 +223,7 @@
     <div class="sample-links">
       <a href="/static/samples/clean/ap_export_clean.csv">Download source (.csv)</a>
       <a href="/static/samples/clean/report.html" class="primary" target="_blank" rel="noopener">View the finished report &rarr;</a>
-      <a href="/static/samples/clean/report-strategy.html" target="_blank" rel="noopener">Strategy summary</a>
-      <a href="/static/samples/clean/report-financial.html" target="_blank" rel="noopener">Financial report</a>
+      <a href="/static/samples/clean/cleaned.xlsx" download>Download cleaned file (.xlsx)</a>
         </div>
   </div>
 
@@ -244,8 +243,7 @@
     <div class="sample-links">
       <a href="/static/samples/dirty/ap_export_dirty.csv">Download source (.csv)</a>
       <a href="/static/samples/dirty/report.html" class="primary" target="_blank" rel="noopener">View the finished report &rarr;</a>
-      <a href="/static/samples/dirty/report-strategy.html" target="_blank" rel="noopener">Strategy summary</a>
-      <a href="/static/samples/dirty/report-financial.html" target="_blank" rel="noopener">Financial report</a>
+      <a href="/static/samples/dirty/cleaned.xlsx" download>Download cleaned file (.xlsx)</a>
     </div>
   </div>
 
@@ -265,8 +263,7 @@
     <div class="sample-links">
       <a href="/static/samples/i18n/golden_pod_i18n_sample.zip">Download source (.zip)</a>
       <a href="/static/samples/i18n/report.html" class="primary" target="_blank" rel="noopener">View the finished report &rarr;</a>
-      <a href="/static/samples/i18n/report-strategy.html" target="_blank" rel="noopener">Strategy summary</a>
-      <a href="/static/samples/i18n/report-financial.html" target="_blank" rel="noopener">Financial report</a>
+      <a href="/static/samples/i18n/cleaned.xlsx" download>Download cleaned file (.xlsx)</a>
         </div>
   </div>
 
@@ -286,8 +283,7 @@
     <div class="sample-links">
       <a href="/static/samples/scale/ap_export_scale.csv.zip">Download source (.zip, 36 MB)</a>
       <a href="/static/samples/scale/report.html" class="primary" target="_blank" rel="noopener">View the finished report &rarr;</a>
-      <a href="/static/samples/scale/report-strategy.html" target="_blank" rel="noopener">Strategy summary</a>
-      <a href="/static/samples/scale/report-financial.html" target="_blank" rel="noopener">Financial report</a>
+      <span class="locked-note" style="border:0">No cleaned file here: 2,001,951 rows exceed what a single Excel sheet can hold.</span>
         </div>
   </div>
 
@@ -307,8 +303,7 @@
     <div class="sample-links">
       <a href="/static/samples/flagship/ap_export_q2_2026.csv">Download source (.csv)</a>
       <a href="/static/samples/flagship/report.html" class="primary" target="_blank" rel="noopener">View the finished report &rarr;</a>
-      <a href="/static/samples/flagship/report-strategy.html" target="_blank" rel="noopener">Strategy summary</a>
-      <a href="/static/samples/flagship/report-financial.html" target="_blank" rel="noopener">Financial report</a>
+      <a href="/static/samples/flagship/cleaned.xlsx" download>Download cleaned file (.xlsx)</a>
         </div>
   </div>
 
@@ -328,11 +323,7 @@
   <div class="wrap footer-inner">
     <div style="max-width: 280px">
       <div style="display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; margin-bottom: 10px; color: var(--ink-bright)">
-        <svg width="22" height="22" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-          <circle cx="13" cy="13" r="7" fill="#C9A227"></circle>
-          <circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle>
-          <ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse>
-        </svg>
+        <img src="/static/mark-128.png" alt="" width="22" height="22" decoding="async">
         GOLDEN POD
       </div>
       <div style="color: var(--muted); line-height: 1.6">Deterministic analysis of accounting files. Findings in dollars, formula published.</div>

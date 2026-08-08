@@ -124,17 +124,34 @@
     .gp-doc { box-shadow: none; max-width: none; padding: 0; }
   }
 
-  .fhead { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
-  .famount { font-family: var(--mono); font-weight: 600; font-size: 18px; color: var(--ink); font-variant-numeric: tabular-nums; }
-  .famount.hot { color: var(--oxblood); }
-  .flag.note { background: #FAF4E6; color: var(--navy); border: 1px solid var(--hair); }
-  .flag.note::before { background: var(--navy); }
-  .finding .tag { font-family: var(--serif); font-size: 16px; line-height: 1.62; color: var(--read); margin: 14px 0 0; padding-left: 20px; text-indent: -20px; max-width: 62ch; }
-  .finding .tag .arw { color: var(--navy); font-weight: 700; margin-right: 8px; }
-  .rollup-link { text-decoration: none; color: inherit; }
-  .rollup-title { font-family: var(--display); font-size: 17px; font-weight: 600; letter-spacing: -.01em; color: var(--ink); }
-  .rollup-cta { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--navy-2); white-space: nowrap; }
   .actions { display: flex; flex-direction: column; }
+  /* Решение — единица этого документа. Крупный глагол в заголовке, сумма справа
+     как то, ЧТО решение защищает, инструкция на подложке, доказательства мелко
+     под ней. Ни одной строки счёта на верхнем уровне — это грамматика 02. */
+  .decision { display: grid; grid-template-columns: 60px 1fr; gap: 22px; padding: 26px 0; border-bottom: .5px solid var(--hair-soft); }
+  .decision:last-child { border-bottom: none; }
+  .d-idx { font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--navy-2); line-height: 1.1; }
+  .d-head { display: grid; grid-template-columns: 1fr max-content; gap: 24px; align-items: start; }
+  .d-title { font-family: var(--display); font-size: clamp(20px, 2.3vw, 26px); font-weight: 600; letter-spacing: -.01em; color: var(--ink); line-height: 1.25; max-width: 34ch; }
+  .d-money { text-align: right; }
+  .d-amt { font-family: var(--display); font-size: clamp(26px, 3.4vw, 34px); font-weight: 600; color: var(--oxblood); font-variant-numeric: tabular-nums; line-height: 1; }
+  .d-amt-cap { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 7px; }
+  .d-why { font-family: var(--serif); font-size: 16.5px; line-height: 1.62; color: var(--read); max-width: 64ch; margin: 16px 0 0; padding: 14px 18px; background: #FAF7EE; border-left: 2px solid var(--navy); }
+  .evidence { margin-top: 16px; }
+  .ev { padding: 10px 0; border-bottom: .5px dotted var(--hair-soft); }
+  .ev:last-of-type { border-bottom: none; }
+  .ev-line { font-family: var(--display); font-size: 15px; font-weight: 500; color: var(--ink); }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 8px; }
+  .chip { font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: var(--read); border: .5px solid var(--hair); padding: 4px 8px; }
+  .ev-more { display: inline-block; margin-top: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--navy-2); text-decoration: none; }
+  @media (max-width: 620px) {
+    .decision { grid-template-columns: 1fr; gap: 10px; }
+    .d-head { grid-template-columns: 1fr; gap: 10px; }
+    .d-money { text-align: left; }
+  }
+  .phase { margin-bottom: 26px; }
+  .phase:last-child { margin-bottom: 0; }
+  .phase-head { font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--navy-2); padding-bottom: 9px; border-bottom: 1.5px solid var(--navy); margin-bottom: 4px; }
   .arow { display: flex; gap: 12px; padding: 16px 0; border-bottom: .5px solid var(--hair-soft); font-family: var(--serif); font-size: 16.5px; color: var(--read); line-height: 1.62; max-width: 66ch; }
   .arow:last-child { border-bottom: none; }
   .arow .arw { color: var(--navy); font-weight: 700; flex: none; }
@@ -151,11 +168,7 @@
 
   <header class="masthead">
     <div class="brand-block">
-      <svg class="brand-mark" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-        <circle cx="13" cy="13" r="7" fill="#C9A227"></circle>
-        <circle cx="10.5" cy="10.5" r="2.2" fill="#E8CE7A"></circle>
-        <ellipse cx="13" cy="13" rx="12" ry="4.4" stroke="#E8CE7A" stroke-width="1.4" transform="rotate(-18 13 13)"></ellipse>
-      </svg>
+      <img class="brand-mark" src="data:image/png;base64,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" alt="" width="42" height="42" decoding="async">
       <div class="wordmark">Golden&nbsp;Pod<small>Data Integrity &amp; Assurance</small></div>
     </div>
     <div class="meta-block">
@@ -174,75 +187,123 @@
   <section class="hero">
     <div class="hero-lede">
       <div class="eyebrow">03 &mdash; Strategy Summary</div>
-      <h1>What to do next, <em>before your next payment run.</em></h1>
-      <p class="lede">This is the shortlist. Every issue is ranked by what it puts at risk and paired with the single action that resolves it &mdash; no theory, no dashboards to read. Work top to bottom and the exposure closes itself.</p>
+      <h1>Six decisions, <em>before your next payment run.</em></h1>
+      <p class="lede">Every line below is a move, not a finding: what to do, by when, and what it protects. The invoices behind each one sit underneath it as evidence &mdash; the full ledger lives in the Financial Review. Work top to bottom and the exposure closes itself.</p>
     </div>
     <div class="score-plate">
-      <div class="cap">At risk · verify first</div>
-      <div class="score-big"><span class="val" style="color:var(--oxblood)">$421,870</span></div>
+      <div class="cap">Decisions on the table</div>
+      <div class="score-big"><span class="val" style="">06</span></div>
       <div class="goldline"></div>
-      <div class="score-note"><span class="band">303 issues</span> traced from your file — and $1,522,510,888 more in spend distorted by inconsistent records. Each is paired below with the one action that closes it.</div>
+      <div class="score-note"><span class="band">303 issues</span> traced from your file. $421,870 at risk and $1,522,510,888 in spend distorted by inconsistent records &mdash; itemized in the Financial Review. Each item below carries the one action that closes it.</div>
     </div>
   </section>
 
+
   <section class="section">
-    <div class="section-head"><span class="num-label">In order of urgency</span><h2>The shortlist</h2><span class="rule"></span></div>
-    <div class="findings">
-      <div class="finding">
-        <div class="idx">01</div>
-        <div>
-          <div class="fhead"><span class="flag">Root cause · systemic</span><span class="famount hot">$421,867</span></div>
-          <p>Systemic pattern: 300 of 300 duplicate pairs are exactly 3 day(s) apart -- consistent with a scheduled re-run posting the same batch twice. $421,867 at risk in this group.</p>
-          <div class="tag"><span class="arw">&rarr;</span> Check what runs on a 3-day cycle in your AP pipeline (batch exports, scheduled imports) before the next cycle fires again.</div>
+    <div class="section-head"><span class="num-label">The plan</span><h2>Ninety days, in three moves</h2><span class="rule"></span></div>
+    <div class="phase"><div class="phase-head">0-30 days · stop the bleed</div>
+        <div class="decision">
+          <div class="d-idx">01</div>
+          <div>
+            <div class="d-head">
+              <div>
+                <div class="d-title">Reverse 300 duplicate payments</div>
+              </div>
+              <div class="d-money"><div class="d-amt">$421,870</div><div class="d-amt-cap">Recoverable</div></div>
+            </div>
+            <p class="d-why">The same vendor was paid the same amount against the same invoice more than once. Hold or reverse these before the next payment run, and confirm each with AP.</p>
+            <div class="evidence">
+          <div class="ev">
+            <div class="ev-line">Silverline Group was paid the same invoice twice.</div>
+            <div class="chips"><span class="chip">INV-2637278</span><span class="chip">×2 payments</span></div>
+          </div>
+          <div class="ev">
+            <div class="ev-line">MERIDIAN SUPPLY CO was paid the same invoice twice.</div>
+            <div class="chips"><span class="chip">INV-1005199</span><span class="chip">×2 payments</span></div>
+          </div>
+          <div class="ev">
+            <div class="ev-line">Coastal Logistics Inc was paid the same invoice twice.</div>
+            <div class="chips"><span class="chip">INV-1267233</span><span class="chip">×2 payments</span></div>
+          </div><a class="ev-more" href="./report-financial.html">All 300 itemized in the Financial Review &rarr;</a></div>
+          </div>
+        </div></div><div class="phase"><div class="phase-head">30-60 days · fix the process</div>
+        <div class="decision">
+          <div class="d-idx">02</div>
+          <div>
+            <div class="d-head">
+              <div>
+                <div class="d-title">Close the cause, not the symptom</div>
+              </div>
+              <div class="d-money"><div class="d-amt">$421,867</div><div class="d-amt-cap">Explained by this one cause</div></div>
+            </div>
+            <p class="d-why">300 of 300 duplicate pairs share pairs posted exactly 3 day(s) apart — a scheduled run posting the same batch twice. Fixing that stops the next batch instead of cleaning up after it.</p>
+            <div class="evidence"><a class="ev-more" href="./report-financial.html">All 300 itemized in the Financial Review &rarr;</a></div>
+          </div>
         </div>
-      </div>
-      <div class="finding">
-        <div class="idx">02</div>
-        <div>
-          <div class="fhead"><span class="flag note">Duplicate payment</span><span class="famount hot">$16,744</span></div>
-          <p>Possible duplicate payment -- Silverline Group, $16,744 paid 2 time(s)</p>
-          <div class="tag"><span class="arw">&rarr;</span> Reverse the duplicate payment of invoice INV-2637278 to Silverline Group ($16,744, paid 2 times across 2 dates) before your next payment run.</div>
+        <div class="decision">
+          <div class="d-idx">03</div>
+          <div>
+            <div class="d-head">
+              <div>
+                <div class="d-title">Consolidate 3 fragmented vendor records</div>
+              </div>
+              <div class="d-money"><div class="d-amt">$1,522,510,888</div><div class="d-amt-cap">Spend affected, not lost</div></div>
+            </div>
+            <p class="d-why">One vendor carried under several spellings splits its spend across records, so every report understates it. Merge them into one canonical record after confirming they are the same entity.</p>
+            <div class="evidence">
+          <div class="ev">
+            <div class="ev-line">&quot;Vertex Services Inc&quot; is spelled 2 different ways.</div>
+            <div class="chips"><span class="chip">vertex services inc</span></div>
+          </div>
+          <div class="ev">
+            <div class="ev-line">&quot;Meridian Supply Co&quot; is spelled 3 different ways.</div>
+            <div class="chips"><span class="chip">MERIDIAN SUPPLY CO</span><span class="chip">meridian supply co</span></div>
+          </div>
+          <div class="ev">
+            <div class="ev-line">&quot;Coastal Logistics&quot; is spelled 2 different ways.</div>
+            <div class="chips"><span class="chip">Coastal Logistics Inc</span></div>
+          </div></div>
+          </div>
+        </div></div><div class="phase"><div class="phase-head">Standing control · keep it shut</div>
+        <div class="decision">
+          <div class="d-idx">04</div>
+          <div>
+            <div class="d-head">
+              <div>
+                <div class="d-title">De-duplicate scheduled runs</div>
+              </div>
+              
+            </div>
+            <p class="d-why">add an idempotency key to whatever posts on the 3-day cycle, so the same batch cannot post twice (300 pairs traced to this cadence).</p>
+            
+          </div>
         </div>
-      </div>
-      <div class="finding">
-        <div class="idx">03</div>
-        <div>
-          <div class="fhead"><span class="flag note">Duplicate payment</span><span class="famount hot">$13,644</span></div>
-          <p>Possible duplicate payment -- MERIDIAN SUPPLY CO, $13,644 paid 2 time(s)</p>
-          <div class="tag"><span class="arw">&rarr;</span> Reverse the duplicate payment of invoice INV-1005199 to MERIDIAN SUPPLY CO ($13,644, paid 2 times across 2 dates) before your next payment run.</div>
+        <div class="decision">
+          <div class="d-idx">05</div>
+          <div>
+            <div class="d-head">
+              <div>
+                <div class="d-title">Pre-payment match</div>
+              </div>
+              
+            </div>
+            <p class="d-why">require vendor + amount + invoice number to be unique against the trailing 90 days before any payment is released, so a duplicate is caught before it leaves the account, not after.</p>
+            
+          </div>
         </div>
-      </div>
-      <div class="finding">
-        <div class="idx">04</div>
-        <div>
-          <div class="fhead"><span class="flag note">Duplicate payment</span><span class="famount hot">$10,707</span></div>
-          <p>Possible duplicate payment -- Coastal Logistics Inc, $10,707 paid 2 time(s)</p>
-          <div class="tag"><span class="arw">&rarr;</span> Reverse the duplicate payment of invoice INV-1267233 to Coastal Logistics Inc ($10,707, paid 2 times across 2 dates) before your next payment run.</div>
-        </div>
-      </div>
-      <div class="finding">
-        <div class="idx">05</div>
-        <div>
-          <div class="fhead"><span class="flag note">Duplicate payment</span><span class="famount hot">$10,217</span></div>
-          <p>Possible duplicate payment -- Vertex Services Inc, $10,217 paid 2 time(s)</p>
-          <div class="tag"><span class="arw">&rarr;</span> Reverse the duplicate payment of invoice INV-1723306 to Vertex Services Inc ($10,217, paid 2 times across 2 dates) before your next payment run.</div>
-        </div>
-      </div>
-      <div class="finding">
-        <div class="idx">06</div>
-        <div>
-          <div class="fhead"><span class="flag note">Duplicate payment</span><span class="famount hot">$8,066</span></div>
-          <p>Possible duplicate payment -- Anchor Point Services Inc, $8,066 paid 2 time(s)</p>
-          <div class="tag"><span class="arw">&rarr;</span> Reverse the duplicate payment of invoice INV-2943758 to Anchor Point Services Inc ($8,066, paid 2 times across 2 dates) before your next payment run.</div>
-        </div>
-      </div>
-      <a class="finding rollup-link" href="./report-financial.html">
-        <div class="idx">+</div>
-        <div>
-          <div class="rollup-title">+298 more findings ($362,489 at risk, $1,522,510,888 spend affected)</div>
-          <p>The complete list, every row and amount, lives in the Financial Review. <span class="rollup-cta">Open report &rarr;</span></p>
-        </div>
-      </a></div>
+        <div class="decision">
+          <div class="d-idx">06</div>
+          <div>
+            <div class="d-head">
+              <div>
+                <div class="d-title">Vendor-master hygiene</div>
+              </div>
+              
+            </div>
+            <p class="d-why">enforce one canonical vendor record and block near-duplicate names at creation, so spend stops fragmenting across spellings and reporting stays true.</p>
+            
+          </div>
+        </div></div>
     <div class="dl-rail">
       <a href="mailto:contact@golden-pod.com">Download PDF</a>
       <a href="mailto:contact@golden-pod.com">Download all (ZIP)</a>
@@ -257,10 +318,6 @@
         <div class="idx">$421,870</div>
         <div><p>300 same-vendor, same-amount payment pairs totaling $421,870 at risk were flagged close together in time -- if both halves of a pair are genuine payments, this is a duplicate payment risk. Itemized in Critical Findings; verify with AP before your next payment run.</p></div>
       </div></div>
-  </section>
-  <section class="section">
-    <div class="section-head"><span class="num-label">Do this</span><h2>Recommended actions</h2><span class="rule"></span></div>
-    <div class="actions"><div class="arow"><span class="arw">&rarr;</span><span>Prevention control -- de-duplicate scheduled runs: add an idempotency key to whatever posts on the 3-day cycle, so the same batch cannot post twice (300 pairs traced to this cadence).</span></div><div class="arow"><span class="arw">&rarr;</span><span>Prevention control -- pre-payment match: require vendor + amount + invoice number to be unique against the trailing 90 days before any payment is released, so a duplicate is caught before it leaves the account, not after.</span></div><div class="arow"><span class="arw">&rarr;</span><span>Prevention control -- vendor-master hygiene: enforce one canonical vendor record and block near-duplicate names at creation, so spend stops fragmenting across spellings and reporting stays true.</span></div><div class="arow"><span class="arw">&rarr;</span><span>0-30 days (stop the bleed): reverse or place a hold on the 300 flagged duplicate payments (~$421,870 at risk) before the next payment run; confirm each with AP.</span></div><div class="arow"><span class="arw">&rarr;</span><span>30-60 days (fix the process): wire in the root-cause control(s) above; consolidate the 3 fragmented vendor record groups (~$1,522,510,888 of spend) into canonical names.</span></div><div class="arow"><span class="arw">&rarr;</span><span>60-90 days (make it durable): run this ledger check every close as a standing control and track the duplicate-catch rate month over month -- proof the leak stayed shut, not a one-time cleanup.</span></div></div>
   </section>
 
   <section class="handoff">
